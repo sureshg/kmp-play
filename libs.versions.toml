@@ -687,7 +687,7 @@ onnxruntime-gpu                      = { module = "com.microsoft.onnxruntime:onn
 jwalker                              = { module = "io.github.epieffe:jwalker"                                               , version.ref = "jwalker" }
 hashsmith                            = { module = "io.github.bluuewhale:hashsmith"                                          , version.ref = "hashsmith" }
 tamboui-toolkit                      = { module = "dev.tamboui:tamboui-toolkit"                                             , version.ref = "tamboui" }
-tamboui-panama-backend               = { module = "dev.tamboui:tamboui-panama-backend"                                       , version.ref = "tamboui" }
+tamboui-panama-backend               = { module = "dev.tamboui:tamboui-panama-backend"                                      , version.ref = "tamboui" }
 
 # Social
 ozone-bluesky                        = { module = "sh.christian.ozone:bluesky"                                              , version.ref = "bluesky-ozone"}
@@ -710,27 +710,4 @@ maven-archeologist                   = { module = "com.squareup.tools.build:mave
 google-javaformat                    = { module = "com.google.googlejavaformat:google-java-format"                          , version.ref = "google-javaformat" }
 palantir-javaformat                  = { module = "com.palantir.javaformat:palantir-java-format"                            , version.ref = "palantir-javaformat" }
 ktfmt                                = { module = "com.facebook:ktfmt"                                                      , version.ref = "ktfmt" }
-
-
-[bundles]
-ajalt                                = ["ajalt-colormath",
-                                        "ajalt-mordant",
-                                        "ajalt-mordant-coroutines",
-                                        "ajalt-mordant-markdown",
-                                        "ajalt-clikt-core",
-                                        "ajalt-clikt",
-                                        "ajalt-clikt-markdown"]
-dataviz                              = ["kotlinx-dataframe-csv",
-                                        "kotlinx-dataframe-jdbc",
-                                        "kotlinx-dataframe-geo",
-                                        "kotlinx-kandy",
-                                        "kotlinx-kandy-geo"]
-otel                                 = ["otel-api",
-                                        "otel-instr-annotations",
-                                        "otel-semconv",
-                                        "otel-instr-ktor",
-                                        "otel-instr-logback-mdc",
-                                        "otel-instr-logback-appender"]
-otel-agent-extn                      = ["otel-instr-api",
-                                        "otel-instr-extension-api"]
 
