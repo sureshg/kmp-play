@@ -94,7 +94,7 @@ settings:
     group: dev.suresh.amper
     version: 1.0.0-SNAPSHOT
     signArtifacts: true
-    publishSources: false
+    publishSources: true
     pom:
       url: https://github.com/sureshg/kmp-amper
       description: Kotlin Multiplatform Amper module
