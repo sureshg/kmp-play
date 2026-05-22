@@ -16,7 +16,7 @@ jre/
 # Kotlin
 **/.kotlin
 
-# Amper
+# Kotlin Toolchain
 build/
 
 # AI Agents & Tools

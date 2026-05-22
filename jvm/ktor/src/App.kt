@@ -30,11 +30,11 @@ suspend fun Application.module() {
   install(Krpc)
 
   routing {
-    get("/") { call.respondText("Kotlin ${KotlinVersion.CURRENT} - Amper!") }
+    get("/") { call.respondText("Kotlin ${KotlinVersion.CURRENT}") }
 
     rpc("/rpc") {
       rpcConfig { serialization { json(json) } }
-      registerService<MyService> { MyServiceImpl(MyServiceParam("Amper")) }
+      registerService<MyService> { MyServiceImpl(MyServiceParam("Kotlin ToolChain")) }
     }
 
     swaggerUI(path = "docs") {

@@ -6,14 +6,15 @@ apply: always
 
 ## 1. Build & Dependencies
 
-### Amper Build System
+### Kotlin Toolchain
 
-- Always use Amper — never Gradle build scripts
+- Always use the [Kotlin Toolchain](https://kotlin-toolchain.org/dev/) — never Gradle build scripts
 - Add `src@target` only when platform-specific code is truly necessary
 - For JVM-only: single JVM target, no `expect`/`actual`
-- Config
-  reference: [common.module-template.yaml](https://github.com/sureshg/kmp-amper/blob/main/shared/common.module-template.yaml), [module.yaml](https://github.com/sureshg/kmp-amper/blob/main/shared/module.yaml)
-- Docs: [amper.org/dev](https://amper.org/dev/)
+- Config reference
+    - [common.module-template.yaml](https://github.com/sureshg/kmp-play/blob/main/shared/common.module-template.yaml)
+    - [module.yaml](https://github.com/sureshg/kmp-play/blob/main/shared/module.yaml)
+- Docs: [kotlin-toolchain.org/dev](https://kotlin-toolchain.org/dev/)
 
 ### Versions & Dependencies
 
@@ -141,7 +142,15 @@ apply: always
 
 ## Reference
 
-- [Kotlin Docs](https://kotlinlang.org/docs/home.html) · [API](https://kotlinlang.org/api/latest/jvm/stdlib/) · [Coding Conventions](https://kotlinlang.org/docs/coding-conventions.html)
-- [Kotlinx Coroutines](https://github.com/Kotlin/kotlinx.coroutines) · [Serialization](https://github.com/Kotlin/kotlinx.serialization) · [I/O](https://github.com/Kotlin/kotlinx-io)
-- [Ktor](https://ktor.io/docs/welcome.html) · [Amper](https://amper.org/dev/)
-- [Java 25 API](https://docs.oracle.com/en/java/javase/25/docs/api/index.html) · [Core Libs](https://docs.oracle.com/en/java/javase/25/core/java-core-libraries1.html) · [Language Changes](https://docs.oracle.com/en/java/javase/25/language/java-language-changes-release.html) · [Dev Guide](https://dev.java/learn/)
+- [Kotlin Docs](https://kotlinlang.org/docs/home.html)
+- [API](https://kotlinlang.org/api/latest/jvm/stdlib/)
+- [Coding Conventions](https://kotlinlang.org/docs/coding-conventions.html)
+- [Kotlinx Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
+- [Serialization](https://github.com/Kotlin/kotlinx.serialization)
+- [I/O](https://github.com/Kotlin/kotlinx-io)
+- [Ktor](https://ktor.io/docs/welcome.html)
+- [Kotlin Toolchain](https://kotlin-toolchain.org/dev/)
+- [Java 25 API](https://docs.oracle.com/en/java/javase/25/docs/api/index.html)
+- [Core Libs](https://docs.oracle.com/en/java/javase/25/core/java-core-libraries1.html)
+- [Language Changes](https://docs.oracle.com/en/java/javase/25/language/java-language-changes-release.html)
+- [Dev Guide](https://dev.java/learn/)

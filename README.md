@@ -1,41 +1,41 @@
-# 🅺 KMP Amper Playground
+# 🅺 KMP Playground
 
 [![GitHub Workflow Status][gha_badge]][gha_url]
 
-A Kotlin Multiplatform CLI playground powered by [Amper](https://github.com/JetBrains/amper)
+A Kotlin Multiplatform playground powered by the [Kotlin Toolchain](https://kotlin-toolchain.org/dev/).
 
 ### Usage
 
 ```bash
-# Update the amper
-$ ./amper update --dev
+# Update the Kotlin CLI
+$ ./kotlin update --dev
 
 # Build the app and create an executable jar
-$ ./amper build [-v release]
-$ ./amper package
+$ ./kotlin build [-v release]
+$ ./kotlin package
 
 # Run the tests
-$ ./amper test
+$ ./kotlin test
 
 # Run the app
-$ ./amper run -m app \
+$ ./kotlin run -m app \
               --jvm-args="--enable-preview --add-modules=jdk.incubator.vector --enable-native-access=ALL-UNNAMED"
-$ ./amper run -m macos --platform macosArm64
+$ ./kotlin run -m macos --platform macosArm64
 
 # JDK Incubator modules
-$ ./amper run -m app \
+$ ./kotlin run -m app \
               --jvm-args="--enable-preview --add-modules=jdk.incubator.vector --enable-native-access=ALL-UNNAMED" \
               --main-class=AppKt
 
 # Dependency insights
-$ ./amper show dependencies -m app --scope=runtime --filter=org.jetbrains.kotlin:kotlin-stdlib
+$ ./kotlin show dependencies -m app --scope=runtime --filter=org.jetbrains.kotlin:kotlin-stdlib
 
 # Publish to mavenLocal
-$ ./amper publish mavenLocal
+$ ./kotlin publish mavenLocal
 
 # Checks and Custom commands
-$ ./amper check -m ktor [graalVMCheck]
-$ ./amper do graalVMCheck
+$ ./kotlin check -m ktor [graalVMCheck]
+$ ./kotlin do graalVMCheck
 
 # List all the binaries
 $ find . \( -path "*/build/*" -type f -perm +111 -o -path "*/build/*executableJar*/*.jar" \) | grep -v -E "(test|debug|dSYM)" | xargs du -h | sort -hr
@@ -100,15 +100,15 @@ $ docker run -it --rm \
 
 ### GraalVM Native Image
 
-Build a native executable for the Ktor application using the `native-image` Amper plugin.
+Build a native executable for the Ktor application using the `native-image` plugin.
 
 ```bash
 # Install GraalVM CE (via SDKMAN)
 $ sdk i java 25.0.2-graalce
 
 # Build the native image
-$ ./amper check -m ktor graalVMCheck
-$ ./amper task :ktor:buildNativeImage@native-image
+$ ./kotlin check -m ktor graalVMCheck
+$ ./kotlin task :ktor:buildNativeImage@native-image
 
 # Run the native image
 $ ./build/tasks/_ktor_buildNativeImage@native-image/ktor
@@ -116,14 +116,14 @@ $ ./build/tasks/_ktor_buildNativeImage@native-image/ktor
 
 ### Self-Contained Binaries
 
-Package Amper executable JARs with [jbundle](https://github.com/avelino/jbundle) to create optimized self-contained
-native bundles.
+Package executable JARs with [jbundle](https://github.com/avelino/jbundle) to create optimized self-contained native
+bundles.
 
 ```bash
 # Extract JAR contents
 $ jar -xf build/tasks/_ktor_executableJarJvm/ktor-jvm-executable.jar
 
-# Note: jarmode layertools not currently supported for Amper JARs
+# Note: jarmode layertools not currently supported for Kotlin Toolchain JARs yet
 # $ java -Djarmode=layertools -jar build/tasks/_ktor_executableJarJvm/ktor-jvm-executable.jar extract
 
 # Detect required Java modules and build bundle
@@ -141,10 +141,10 @@ $ jbundle build \
 ```
 
 > [!TIP]
-> You can find all the Amper CLI dev
-> versions [here](https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/amper-cli/)
+> You can find all the Kotlin CLI dev versions
+> [here](https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/kotlin/kotlin-cli/).
 
-### Amper Config Settings
+### Config Settings
 
 | Configuration     | 📝 Description                                                                                                                                    | 🎯 Applies To                   |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------|
@@ -154,6 +154,6 @@ $ jbundle build \
 
 <!-- Badges -->
 
-[gha_url]: https://github.com/sureshg/kmp-amper/actions/workflows/build.yaml
+[gha_url]: https://github.com/sureshg/kmp-play/actions/workflows/build.yaml
 
-[gha_badge]: https://img.shields.io/github/actions/workflow/status/sureshg/kmp-amper/build.yaml?branch=main&style=flat&logo=kotlin&logoColor=white&label=Amper%20Build
+[gha_badge]: https://img.shields.io/github/actions/workflow/status/sureshg/kmp-play/build.yaml?branch=main&style=flat&logo=kotlin&logoColor=white&label=Kotlin%20Build

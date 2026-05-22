@@ -96,8 +96,8 @@ settings:
     signArtifacts: true
     publishSources: true
     pom:
-      url: https://github.com/sureshg/kmp-amper
-      description: Kotlin Multiplatform Amper module
+      url: https://github.com/sureshg/kmp-play
+      description: Kotlin Multiplatform & JVM playground
       licenses:
         - name: The Apache License, Version 2.0
           url: https://www.apache.org/licenses/LICENSE-2.0.txt
@@ -108,7 +108,7 @@ settings:
           organization: suresh.dev
           organizationUrl: https://suresh.dev
       scm:
-        url: https://github.com/sureshg/kmp-amper
+        url: https://github.com/sureshg/kmp-play
 
 settings@jvm:
   java:
