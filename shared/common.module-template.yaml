@@ -73,7 +73,8 @@ settings:
       - kotlin.ExperimentalMultiplatform
       - kotlin.uuid.ExperimentalUuidApi
       - kotlin.concurrent.atomics.ExperimentalAtomicApi
-      - com.javiersc.kotlin.kopy.KopyOptIn
+      # - com.javiersc.kotlin.kopy.KopyOptIn
+      # - io.opentelemetry.kotlin.ExperimentalApi
 
     serialization:
       version: 1.11.0

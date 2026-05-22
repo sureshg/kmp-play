@@ -10,8 +10,6 @@ settings:
   compose:
     version: 1.11.0
     enabled: true
-    resources:
-      enabled: true
     experimental:
       hotReload:
         version: 1.1.1

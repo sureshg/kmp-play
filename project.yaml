@@ -1,19 +1,19 @@
 modules:
-  - shared
+# - "*-cli"
   - jvm/app
   - jvm/compose
   - jvm/data
   - jvm/ktor
+# - native/cinterop
   - native/linux
   - native/macos
   - native/windows
-# - native/cinterop
   - plugins/build-config
   - plugins/native-image
+  - shared
 # - web/js
-# - web/wasm
 # - web/wasi
-# - "*-cli"
+# - web/wasm
 
 plugins:
   - ./plugins/build-config
