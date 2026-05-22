@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: 'Amper task to run'
+        description: 'Kotlin task to run'
         required: false
         default: package
         type: choice
@@ -31,10 +31,10 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  AMPER_BOOTSTRAP_CACHE_DIR: ${{ github.workspace }}/.amper/boot-cache
-  AMPER_SHARED_CACHE_DIR: ${{ github.workspace }}/.amper/shared-cache
-  AMPER_OVERRIDE_MAVEN_CENTRAL_URL_TO_CACHE_REDIRECTOR: true
-  AMPER_TASK: ${{ inputs.task || 'package' }}
+  KOTLIN_CLI_BOOTSTRAP_CACHE_DIR: ${{ github.workspace }}/.kotlin/boot-cache
+  KOTLIN_SHARED_CACHE_DIR: ${{ github.workspace }}/.kotlin/shared-cache
+  KOTLIN_DEFAULT_MAVEN_CENTRAL_URL: https://cache-redirector.jetbrains.com/repo.maven.apache.org/maven2
+  KOTLIN_TASK: ${{ inputs.task || 'package' }}
 
 jobs:
   build:
@@ -48,32 +48,32 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - name: ⚡ Cache Amper bootstrap
+      - name: ⚡ Cache Kotlin CLI bootstrap
         uses: actions/cache@v5
         with:
-          path: ${{ env.AMPER_BOOTSTRAP_CACHE_DIR }}
-          key: amper-boot-${{ runner.os }}-${{ hashFiles('amper', 'amper.bat') }}
+          path: ${{ env.KOTLIN_CLI_BOOTSTRAP_CACHE_DIR }}
+          key: kotlin-boot-${{ runner.os }}-${{ hashFiles('kotlin', 'kotlin.bat') }}
 
       - name: 🛠️ Cache toolchains & JDKs
         uses: actions/cache@v5
         with:
           path: |
-            ${{ env.AMPER_SHARED_CACHE_DIR }}/download.cache
-            ${{ env.AMPER_SHARED_CACHE_DIR }}/extract.cache
-          key: amper-shared-downloads-${{ runner.os }}-${{ hashFiles('project.yaml', '**/module.yaml', '**/plugin.yaml', 'amper', 'amper.bat', 'libs.versions.toml') }}
+            ${{ env.KOTLIN_SHARED_CACHE_DIR }}/download.cache
+            ${{ env.KOTLIN_SHARED_CACHE_DIR }}/extract.cache
+          key: kotlin-shared-downloads-${{ runner.os }}-${{ hashFiles('project.yaml', '**/module.yaml', '**/plugin.yaml', 'kotlin', 'kotlin.bat', 'libs.versions.toml') }}
           restore-keys: |
-            amper-shared-downloads-${{ runner.os }}-
+            kotlin-shared-downloads-${{ runner.os }}-
 
       - name: 📦 Cache Maven & Kotlin dependencies
         uses: actions/cache@v5
         with:
           path: |
-            ${{ env.AMPER_SHARED_CACHE_DIR }}/.m2.cache
-            ${{ env.AMPER_SHARED_CACHE_DIR }}/kotlin
+            ${{ env.KOTLIN_SHARED_CACHE_DIR }}/.m2.cache
+            ${{ env.KOTLIN_SHARED_CACHE_DIR }}/kotlin
           enableCrossOsArchive: true
-          key: amper-shared-dependencies-${{ hashFiles('project.yaml', '**/module.yaml', '**/plugin.yaml', 'amper', 'amper.bat', 'libs.versions.toml') }}
+          key: kotlin-shared-dependencies-${{ hashFiles('project.yaml', '**/module.yaml', '**/plugin.yaml', 'kotlin', 'kotlin.bat', 'libs.versions.toml') }}
           restore-keys: |
-            amper-shared-dependencies-
+            kotlin-shared-dependencies-
 
       - name: 🗂️ Cache build outputs
         uses: actions/cache@v5
@@ -81,17 +81,17 @@ jobs:
           path: |
             build/*
             !build/logs
-          key: amper-project-${{ runner.os }}-${{ hashFiles('project.yaml', '**/module.yaml', '**/plugin.yaml', 'amper', 'amper.bat', 'libs.versions.toml') }}
+          key: kotlin-project-${{ runner.os }}-${{ hashFiles('project.yaml', '**/module.yaml', '**/plugin.yaml', 'kotlin', 'kotlin.bat', 'libs.versions.toml') }}
           restore-keys: |
-            amper-project-${{ runner.os }}-
+            kotlin-project-${{ runner.os }}-
 
       - name: 🅺 Extract Kotlin version
-        if: env.AMPER_TASK == 'build'
+        if: env.KOTLIN_TASK == 'build'
         run: |
           echo "KOTLIN_VERSION=$(grep '^kotlin ' libs.versions.toml | sed 's/.*= *"\(.*\)"/\1/')" >> $GITHUB_ENV
 
-      - name: ⚙️ Cache Kotlin/Native konan toolchains
-        if: env.AMPER_TASK == 'build'
+      - name: ⚙️ Cache Kotlin/Native toolchains
+        if: env.KOTLIN_TASK == 'build'
         uses: actions/cache@v5
         with:
           path: ~/.konan
@@ -101,19 +101,19 @@ jobs:
 
       - name: 🏗️ Build
         run: |
-          if [ "$AMPER_TASK" = "build" ]; then
-            ./amper build -v release
+          if [ "$KOTLIN_TASK" = "build" ]; then
+            ./kotlin build -v release
             ./build/tasks/_macos_linkMacosArm64Release/macos.kexe
           else
-            ./amper package
+            ./kotlin package
           fi
 
       - name: 🔭 Upload OpenTelemetry traces
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: amper_cli_traces.jsonl
-          path: build/logs/amper_*_${{ env.AMPER_TASK }}/telemetry/amper_cli_traces.jsonl
+          name: kotlin_cli_traces.jsonl
+          path: build/logs/amper_*_${{ env.KOTLIN_TASK }}/telemetry/amper_cli_traces.jsonl
           archive: false
           if-no-files-found: ignore
 
@@ -126,7 +126,7 @@ jobs:
           if-no-files-found: error
 
       - name: 🐧 Upload linux-x64
-        if: env.AMPER_TASK == 'build'
+        if: env.KOTLIN_TASK == 'build'
         uses: actions/upload-artifact@v7
         with:
           name: app-linux-x64.zip
@@ -134,7 +134,7 @@ jobs:
           if-no-files-found: error
 
       - name: 🐧 Upload linux-arm64
-        if: env.AMPER_TASK == 'build'
+        if: env.KOTLIN_TASK == 'build'
         uses: actions/upload-artifact@v7
         with:
           name: app-linux-arm64.zip
@@ -142,7 +142,7 @@ jobs:
           if-no-files-found: error
 
       - name: 🍎 Upload macos-arm64
-        if: env.AMPER_TASK == 'build'
+        if: env.KOTLIN_TASK == 'build'
         uses: actions/upload-artifact@v7
         with:
           name: app-macos-arm64.zip
@@ -150,7 +150,7 @@ jobs:
           if-no-files-found: error
 
       - name: 🪟 Upload windows-x64
-        if: env.AMPER_TASK == 'build'
+        if: env.KOTLIN_TASK == 'build'
         uses: actions/upload-artifact@v7
         with:
           name: app-windows-x64.zip
