@@ -3,7 +3,7 @@ product: jvm/amper-plugin
 # repositories:
 #  - https://packages.jetbrains.team/maven/p/amper/amper
 
-description: Native Image plugin for Amper
+description: Native Image plugin for the Kotlin Toolchain
 
 dependencies:
   - $libs.ktor.client.cio: runtime-only
