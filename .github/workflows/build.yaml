@@ -34,6 +34,10 @@ env:
   KOTLIN_CLI_BOOTSTRAP_CACHE_DIR: ${{ github.workspace }}/.kotlin/boot-cache
   KOTLIN_SHARED_CACHE_DIR: ${{ github.workspace }}/.kotlin/shared-cache
   KOTLIN_TASK: ${{ inputs.task || 'package' }}
+# KOTLIN_CLI_NO_WELCOME_BANNER: 1
+# KOTLIN_CLI_JAVA_OPTIONS: --enable-preview
+# KOTLIN_CLI_JAVA_HOME: ...
+# KOTLIN_CLI_DOWNLOAD_ROOT: ...
 # KOTLIN_DEFAULT_MAVEN_CENTRAL_URL: https://cache-redirector.jetbrains.com/repo.maven.apache.org/maven2
 
 jobs:
