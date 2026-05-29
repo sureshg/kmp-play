@@ -4,6 +4,3 @@ product:
 
 apply:
   - ../../shared/common.module-template.yaml
-
-dependencies:
-  - ../../shared

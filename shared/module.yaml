@@ -1,6 +1,11 @@
 product:
   type: kmp/lib
-  platforms: [ jvm, linuxArm64, linuxX64, macosArm64, mingwX64 ]
+  platforms:
+    - jvm
+    - linuxArm64
+    - linuxX64
+    - macosArm64
+    - mingwX64
 
 description: |
   Common shared library

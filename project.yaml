@@ -4,7 +4,7 @@ modules:
   - jvm/compose
   - jvm/data
   - jvm/ktor
-# - native/cinterop
+  - native/cinterop
   - native/linux
   - native/macos
   - native/windows
