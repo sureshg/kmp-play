@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
   println(getGreeting()?.toKString())
   val curl = curl_easy_init()
   if (curl != null) {
-    curl_easy_setopt(curl, CURLOPT_URL, "https://suresh.dev")
+    curl_easy_setopt(curl, CURLOPT_URL, "https://suresh.dev/media-api/images.json")
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L)
     val res = curl_easy_perform(curl)
     if (res != CURLE_OK) {
