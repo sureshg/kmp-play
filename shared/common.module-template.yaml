@@ -17,7 +17,7 @@ repositories:
 
 settings:
   jvm:
-    release: 25
+    # release: 26
     storeParameterNames: true
     jdk:
       version: 26
@@ -25,7 +25,7 @@ settings:
       # selectionMode: javaHome
 
   kotlin:
-    version: 2.4.0-RC
+    version: 2.4.0-RC2
     languageVersion: 2.4
     apiVersion: 2.4
     progressiveMode: true
@@ -81,7 +81,7 @@ settings:
       format: json
 
     ksp:
-      version: 2.3.8
+      version: 2.3.9
 
     rpc:
       enabled: true
@@ -93,22 +93,20 @@ settings:
     # artifactId: shared
     group: dev.suresh.amper
     version: 1.0.0-SNAPSHOT
+    mavenCentral:
+      enabled: false
+      publishingMode: auto
     signArtifacts: true
     publishSources: true
     pom:
       url: https://github.com/sureshg/kmp-play
-      description: Kotlin Multiplatform & JVM playground
+      scm: https://github.com/sureshg/kmp-play.git
+      developers:
+        - name: Suresh
+          url: https://suresh.dev
       licenses:
         - name: The Apache License, Version 2.0
           url: https://www.apache.org/licenses/LICENSE-2.0.txt
-      developers:
-        - id: suresh
-          name: Suresh
-          email: email@suresh.dev
-          organization: suresh.dev
-          organizationUrl: https://suresh.dev
-      scm:
-        url: https://github.com/sureshg/kmp-play
 
 settings@jvm:
   java:
@@ -117,7 +115,6 @@ settings@jvm:
       - -Xlint:all
       - --add-modules=jdk.incubator.vector
       - --enable-preview
-      - --release=26
     # annotationProcessing:
     #   processors:
     #     - $libs.google.auto.service
@@ -191,4 +188,5 @@ test-settings:
         - kotlin.test.assertTrue
         - kotlin.test.assertEquals
         - kotlin.test.assertNull
+        - kotlin.test.assertContentEquals
 
