@@ -31,14 +31,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  KOTLIN_CLI_BOOTSTRAP_CACHE_DIR: ${{ github.workspace }}/.kotlin/boot-cache
-  KOTLIN_SHARED_CACHE_DIR: ${{ github.workspace }}/.kotlin/shared-cache
   KOTLIN_TASK: ${{ inputs.task || 'package' }}
-# KOTLIN_CLI_NO_WELCOME_BANNER: 1
-# KOTLIN_CLI_JAVA_OPTIONS: --enable-preview
-# KOTLIN_CLI_JAVA_HOME: ...
-# KOTLIN_CLI_DOWNLOAD_ROOT: ...
-# KOTLIN_DEFAULT_MAVEN_CENTRAL_URL: https://cache-redirector.jetbrains.com/repo.maven.apache.org/maven2
+  # KOTLIN_DEFAULT_MAVEN_CENTRAL_URL: https://cache-redirector.jetbrains.com/repo.maven.apache.org/maven2
 
 jobs:
   build:
@@ -52,56 +46,10 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - name: ⚡ Cache Kotlin CLI bootstrap
-        uses: actions/cache@v5
+      - name: 🅺 Cache Kotlin Toolchain
+        uses: sureshg/actions/kotlin-toolchain-cache@v1
         with:
-          path: ${{ env.KOTLIN_CLI_BOOTSTRAP_CACHE_DIR }}
-          key: kotlin-boot-${{ runner.os }}-${{ hashFiles('kotlin', 'kotlin.bat') }}
-
-      - name: 🛠️ Cache toolchains & JDKs
-        uses: actions/cache@v5
-        with:
-          path: |
-            ${{ env.KOTLIN_SHARED_CACHE_DIR }}/download.cache
-            ${{ env.KOTLIN_SHARED_CACHE_DIR }}/extract.cache
-          key: kotlin-shared-downloads-${{ runner.os }}-${{ hashFiles('project.yaml', '**/module.yaml', '**/plugin.yaml', 'kotlin', 'kotlin.bat', 'libs.versions.toml') }}
-          restore-keys: |
-            kotlin-shared-downloads-${{ runner.os }}-
-
-      - name: 📦 Cache Maven & Kotlin dependencies
-        uses: actions/cache@v5
-        with:
-          path: |
-            ${{ env.KOTLIN_SHARED_CACHE_DIR }}/.m2.cache
-            ${{ env.KOTLIN_SHARED_CACHE_DIR }}/kotlin
-          enableCrossOsArchive: true
-          key: kotlin-shared-dependencies-${{ hashFiles('project.yaml', '**/module.yaml', '**/plugin.yaml', 'kotlin', 'kotlin.bat', 'libs.versions.toml') }}
-          restore-keys: |
-            kotlin-shared-dependencies-
-
-      - name: 🗂️ Cache build outputs
-        uses: actions/cache@v5
-        with:
-          path: |
-            build/*
-            !build/logs
-          key: kotlin-project-${{ runner.os }}-${{ hashFiles('project.yaml', '**/module.yaml', '**/plugin.yaml', 'kotlin', 'kotlin.bat', 'libs.versions.toml') }}
-          restore-keys: |
-            kotlin-project-${{ runner.os }}-
-
-      - name: 🅺 Extract Kotlin version
-        if: env.KOTLIN_TASK == 'build'
-        run: |
-          echo "KOTLIN_VERSION=$(grep '^kotlin ' libs.versions.toml | sed 's/.*= *"\(.*\)"/\1/')" >> $GITHUB_ENV
-
-      - name: ⚙️ Cache Kotlin/Native toolchains
-        if: env.KOTLIN_TASK == 'build'
-        uses: actions/cache@v5
-        with:
-          path: ~/.konan
-          key: konan-${{ runner.os }}-${{ env.KOTLIN_VERSION }}
-          restore-keys: |
-            konan-${{ runner.os }}-
+          konan: ${{ env.KOTLIN_TASK == 'build' }}
 
       - name: 🏗️ Build
         run: |
