@@ -8,6 +8,7 @@ repositories:
 #
 # - id: mavenCentral
 #   url: https://repo.maven.apache.org/maven2/
+#   resolve: false
 #
 # - id: mavenSnapshot
 #   url: https://central.sonatype.com/repository/maven-snapshots/
@@ -47,20 +48,18 @@ settings:
       # - -Xskip-prerelease-check
       # - -Xsuppress-warning=CAN_BE_VAL
       # - -Xwarning-level=UNCHECKED_CAST:error
-
-      #compilerPlugins:
-      # - id: com.javiersc.kotlin.kopy-compiler
-      #   dependency: $libs.kopy.compilerPlugin
-      # - id: io.exoquery.exoquery-plugin
-      #   dependency: $libs.exoquery.compilerPlugin
-      # - id: dev.zacsweers.redacted.compiler
-      #   dependency: $libs.kotlin.redacted.compilerPlugin
-      #   options:
-      #     enabled: true
-      #     replacementString: "█"
-      #     redactedAnnotations: dev/zacsweers/redacted/annotations/Redacted
-      #     unredactedAnnotations: dev/zacsweers/redacted/annotations/Unredacted
-
+    compilerPlugins:
+      - id: dev.zacsweers.redacted.compiler
+        dependency: $libs.kotlin.redacted.compilerPlugin
+        options:
+          enabled: true
+          replacementString: "█"
+          redactedAnnotations: dev/zacsweers/redacted/annotations/Redacted
+          unredactedAnnotations: dev/zacsweers/redacted/annotations/Unredacted
+    # - id: com.javiersc.kotlin.kopy-compiler
+    #   dependency: $libs.kopy.compilerPlugin
+    # - id: io.exoquery.exoquery-plugin
+    #   dependency: $libs.exoquery.compilerPlugin
     optIns:
       - kotlin.ExperimentalStdlibApi
       - kotlin.ExperimentalUnsignedTypes
