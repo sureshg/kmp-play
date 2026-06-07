@@ -3,18 +3,19 @@ import dev.suresh.rpc.MyService
 import io.github.oshai.kotlinlogging.KotlinLoggingConfiguration
 import io.ktor.openapi.*
 import io.ktor.server.application.*
+import io.ktor.server.config.ApplicationConfig
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.swagger.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.util.logging.*
+import kotlin.io.path.Path
+import kotlin.io.path.exists
 import kotlinx.rpc.krpc.ktor.server.Krpc
 import kotlinx.rpc.krpc.ktor.server.rpc
 import kotlinx.rpc.krpc.serialization.json.json
 import rpc.MyServiceImpl
 import rpc.MyServiceParam
-import kotlin.io.path.Path
-import kotlin.io.path.exists
 
 fun main(args: Array<String>) =
     try {
@@ -27,6 +28,9 @@ fun main(args: Array<String>) =
 
 suspend fun Application.module() {
   log.info("Starting the app ...")
+  val config = ApplicationConfig("application.conf").property("ktor").getMap()
+  println(config)
+
   install(Krpc)
 
   routing {

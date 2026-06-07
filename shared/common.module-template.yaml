@@ -56,8 +56,8 @@ settings:
           replacementString: "█"
           redactedAnnotations: dev/zacsweers/redacted/annotations/Redacted
           unredactedAnnotations: dev/zacsweers/redacted/annotations/Unredacted
-    # - id: com.javiersc.kotlin.kopy-compiler
-    #   dependency: $libs.kopy.compilerPlugin
+      - id: com.javiersc.kotlin.kopy-compiler
+        dependency: $libs.kopy.compilerPlugin
     # - id: io.exoquery.exoquery-plugin
     #   dependency: $libs.exoquery.compilerPlugin
     optIns:
@@ -83,7 +83,7 @@ settings:
       version: 2.3.9
 
     rpc:
-      enabled: false
+      enabled: true
       version: 0.10.2
       annotationTypeSafetyEnabled: true
 
