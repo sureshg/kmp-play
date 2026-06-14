@@ -11,20 +11,24 @@ import kotlin.concurrent.atomics.AtomicBoolean
 
 class CurlLoggingConfig {
   var logger: KLogger? = null
-  var sanitizedHeaders = setOf(HttpHeaders.Authorization)
+  var redactedHeaders = setOf(HttpHeaders.Authorization)
+  var redactedQueryParams = setOf("api_key", "token", "sig", "access_token")
   var enabled = AtomicBoolean(true)
 }
 
 val CurlLogging =
     createClientPlugin("CurlLogging", ::CurlLoggingConfig) {
-      val logger = pluginConfig.logger
-      val sanitized = pluginConfig.sanitizedHeaders.map { it.lowercase() }.toSet()
+      val logger = pluginConfig.logger ?: return@createClientPlugin
+      val redactedHeaders = pluginConfig.redactedHeaders.map { it.lowercase() }
+      val redactedParams = pluginConfig.redactedQueryParams.map { it.lowercase() }
       val enabled = pluginConfig.enabled
 
-      on(SendingRequest) { request, content ->
-        when {
-          enabled.load() && logger?.isDebugEnabled() == true ->
-              logger.debug { toCurl(request, content, sanitized) }
+      // Read-only observer in the Monitoring phase — the same place Ktor's own Logging
+      // plugin sits, after the body has been rendered to an OutgoingContent.
+      client.sendPipeline.intercept(HttpSendPipeline.Monitoring) {
+        val content = subject as? OutgoingContent
+        if (content != null && enabled.load() && logger.isDebugEnabled()) {
+          logger.debug { toCurl(context, content, redactedHeaders, redactedParams) }
         }
       }
     }
@@ -32,7 +36,8 @@ val CurlLogging =
 private fun toCurl(
     request: HttpRequestBuilder,
     content: OutgoingContent,
-    sanitized: Set<String>,
+    redactedHeaders: List<String>,
+    redactedParams: List<String>,
 ): String = buildString {
   append("curl")
 
@@ -45,21 +50,18 @@ private fun toCurl(
   }
 
   headers.forEach { name, values ->
-    val value =
-        when {
-          name.lowercase() in sanitized -> "***"
-          else -> values.joinToString(", ")
-        }
-    append(" -H '$name: $value'")
+    val value = if (name.lowercase() in redactedHeaders) "***" else values.joinToString(", ")
+    append(" -H ").append("$name: $value".quoted())
   }
 
-  // Body — only in-memory content (TextContent, ByteArrayContent) is included.
-  // Streaming bodies (WriteChannelContent, ReadChannelContent) are intentionally
-  // skipped to avoid consuming the one-shot stream and breaking the actual request.
+  // Body — in-memory content is inlined as -d. Streaming bodies can't be read without
+  // consuming the one-shot send stream, so they get a clear placeholder instead.
   when (content) {
-    is TextContent -> append(" -d '${content.text}'")
-    is ByteArrayContent -> append(" -d '${content.bytes().decodeToString()}'")
-    else -> Unit
+    is TextContent -> append(" -d ").append(content.text.quoted())
+    is ByteArrayContent -> append(" -d ").append(content.bytes().decodeToString().quoted())
+    is OutgoingContent.ReadChannelContent,
+    is OutgoingContent.WriteChannelContent -> append(" -d '[streaming body omitted]'")
+    else -> Unit // EmptyContent
   }
 
   // Compressed flag
@@ -67,5 +69,22 @@ private fun toCurl(
     append(" --compressed")
   }
 
-  append(" '${request.url.buildString()}'")
+  append(" ").append(redactedUrl(request.url, redactedParams).quoted())
 }
+
+/** POSIX single-quote escaping: close, emit an escaped quote, reopen. */
+private fun String.quoted() = replace("'", """'\''""").let { "'$it'" }
+
+/** Masks userinfo and secret query params without mutating the original request URL. */
+private fun redactedUrl(source: URLBuilder, redactedParams: List<String>) =
+    URLBuilder()
+        .apply {
+          takeFrom(source)
+          if (user != null) user = "***"
+          if (password != null) password = "***"
+          parameters
+              .names()
+              .filter { it.lowercase() in redactedParams }
+              .forEach { parameters[it] = "***" }
+        }
+        .buildString()

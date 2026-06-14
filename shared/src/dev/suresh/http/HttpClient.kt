@@ -124,7 +124,6 @@ fun defaultHttpClientConfig(
 
   install(CurlLogging) {
     logger = httpLogger
-    sanitizedHeaders = setOf(HttpHeaders.Authorization)
   }
 
   // install(SaveBodyPlugin) {
