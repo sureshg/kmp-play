@@ -2,7 +2,7 @@ product:
   type: jvm/app
 
 apply:
-  - ../../shared/common.module-template.yaml
+  - //shared/common.module-template.yaml
 
 settings:
   jvm:
@@ -15,7 +15,7 @@ settings:
         version: 1.1.1
 
 dependencies:
-  - ../../shared
+  - //shared
   - $libs.slf4j.simple
   - $compose.desktop.currentOs
 # - $libs.compose2pdf

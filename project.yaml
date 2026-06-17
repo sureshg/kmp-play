@@ -16,5 +16,5 @@ modules:
 # - web/wasm
 
 plugins:
-  - ./plugins/build-config
-  - ./plugins/native-image
+  - //plugins/build-config
+  - //plugins/native-image

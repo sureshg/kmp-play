@@ -22,7 +22,7 @@ kotlinx-metadata               = "0.9.0"
 kotlinx-schema                 = "0.5.0"
 kotlinx-reflect-lite           = "1.2.0-RC"
 kotlin-lincheck                = "3.6"
-kotlin-wrappers                = "2026.6.4"
+kotlin-wrappers                = "2026.6.5"
 kotlin-redacted                = "1.17.0"
 kotlin-serviceloader           = "0.0.24"
 kotlinx-multik                 = "0.3.1"
@@ -56,7 +56,7 @@ otel                           = "1.63.0"
 otel-alpha                     = "1.63.0-alpha"
 otel-instr                     = "2.28.1"
 otel-instr-alpha               = "2.28.1-alpha"
-otel-semconv                   = "1.41.1"
+otel-semconv                   = "1.42.0"
 otel-contrib                   = "1.57.0-alpha"
 otel-kotlin                    = "0.4.0"
 tracy-ktor                     = "0.1.0"
@@ -70,10 +70,11 @@ bob                            = "0.7.0"
 javable                        = "0.1.0-SNAPSHOT"
 zip-prefixer                   = "0.4.0"
 kflate                         = "1.0.0"
+kompress                       = "2.1.0"
 ajalt-mordant                  = "3.0.2"
 ajalt-clikt                    = "5.1.0"
 ajalt-colormath                = "3.6.1"
-jline                          = "4.1.3"
+jline                          = "4.2.1"
 classgraph                     = "4.8.184"
 cache4k                        = "0.14.0"
 intellij-markdown              = "0.7.5"
@@ -84,9 +85,9 @@ jsch                           = "2.28.3"
 pty4j                          = "0.13.12"
 oshi                           = "7.3.1"
 junit                          = "6.1.0"
-koin                           = "4.2.1"
+koin                           = "4.2.2"
 metro                          = "0.4.0"
-kotest                         = "6.1.11"
+kotest                         = "6.2.0"
 mockk                          = "1.14.11"
 mokkery                        = "3.4.1"
 mokksy                         = "0.11.0"
@@ -161,6 +162,7 @@ maven-mima                     = "3.0.0-alpha-3"
 maven-archeologist             = "0.0.10"
 jfree-chart                    = "1.5.6"
 jfree-svg                      = "5.0.7"
+svg4kt                         = "0.1.0"
 xchart                         = "4.0.1"
 batik                          = "1.19"
 twelvemonkeys                  = "3.13.1"
@@ -172,18 +174,19 @@ kfswatch                       = "1.4.0"
 kommand                        = "2.3.0"
 kmp-process                    = "0.5.0"
 ktembed                        = "0.1.6"
-langchain4j                    = "1.16.2"
+langchain4j                    = "1.16.3"
 langchain4j-kotlin             = "0.3.0"
 mcp-kotlin                     = "0.13.0"
 koog                           = "1.0.0"
-dokimos                        = "0.22.0"
+dokimos                        = "0.23.0"
 kregex                         = "0.4.0"
 mcp4k                          = "0.4.11"
 dflib                          = "2.0.0-M6"
-ldaptive                       = "2.5.0"
+ldaptive                       = "2.5.1"
 chicory                        = "1.7.5"
 weh-bindings                   = "0.6.0"
 wasm2class                     = "0.5.0"
+endive                         = "0.0.1"
 zerofs                         = "0.1.0"
 lumis4j                        = "0.0.10"
 quickjs4j                      = "0.0.4"
@@ -204,11 +207,11 @@ tamboui                        = "0.3.0"
 
 # Compose
 compose                        = "1.11.1"
-compose-material3              = "1.12.0-alpha01"
-compose-viewmodel              = "2.11.0-beta01"
+compose-material3              = "1.12.0-alpha02"
+compose-viewmodel              = "2.11.0-beta02"
 compose-nav                    = "2.9.2"
 compose-nav3                   = "1.1.1"
-compose-adaptive               = "1.3.0-beta01"
+compose-adaptive               = "1.3.0-beta02"
 compose-icons                  = "1.7.3"
 compose-fontawesome            = "1.1.1"
 compose-hotreload              = "1.1.1"
@@ -431,6 +434,9 @@ tomlj                                = { module = "org.tomlj:tomlj"             
 bytesize                             = { module = "me.saket.bytesize:bytesize"                                 , version.ref = "bytesize" }
 zip-prefixer                         = { module = "net.e175.klaus:zip-prefixer"                                , version.ref = "zip-prefixer" }
 kflate                               = { module = "com.rafambn:KFlate"                                         , version.ref = "kflate" }
+kompress-core                        = { module = "dev.karmakrafts.kompress:kompress-core"                     , version.ref = "kompress" }
+kompress-gzip                        = { module = "dev.karmakrafts.kompress:kompress-gzip"                     , version.ref = "kompress" }
+kompress-zip                         = { module = "dev.karmakrafts.kompress:kompress-zip"                      , version.ref = "kompress" }
 embedded-postgres                    = { module = "io.zonky.test:embedded-postgres"                            , version.ref = "embedded-postgres"}
 embedded-postgres-bom                = { module = "io.zonky.test.postgres:embedded-postgres-binaries-bom"      , version.ref = "embedded-postgres-bom"}
 
@@ -565,6 +571,7 @@ jfree-chart                          = { module = "org.jfree:jfreechart"        
 jfree-svg                            = { module = "org.jfree:org.jfree.svg"                                    , version.ref = "jfree-svg"}
 batiksvg-all                         = { module = "org.apache.xmlgraphics:batik-all"                           , version.ref = "batik"}
 imageio-extns                        = { module = "com.twelvemonkeys.imageio:imageio"                          , version.ref = "twelvemonkeys"}
+svg4kt                               = { module = "dev.jamesyox:svg4kt"                                        , version.ref = "svg4kt"}
 
 # Barcode/QrCode
 okapibarcode                         = { module = "uk.org.okapibarcode:okapibarcode"                           , version.ref = "okapibarcode"}
@@ -664,6 +671,8 @@ zerofs                               = { module = "io.roastedroot:zerofs"       
 lumis4j                              = { module = "io.roastedroot:lumis4j"                                                  , version.ref = "lumis4j" }
 protobuf4j-v3                        = { module = "io.roastedroot:protobuf4j-v3"                                            , version.ref = "protobuf4j" }
 protobuf4j-v4                        = { module = "io.roastedroot:protobuf4j-v4"                                            , version.ref = "protobuf4j" }
+endive-runtime                       = { module = "run.endive:runtime"                                                      , version.ref = "endive" }
+endive-wasi                          = { module = "run.endive:wasi"                                                         , version.ref = "endive" }
 
 # AI/ML
 langchain4j                          = { module = "dev.langchain4j:langchain4j"                                             , version.ref = "langchain4j" }

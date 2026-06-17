@@ -3,7 +3,7 @@ product:
   platforms: [ macosArm64 ]
 
 apply:
-  - ../../shared/common.module-template.yaml
+  - //shared/common.module-template.yaml
 
 dependencies:
-  - ../../shared
+  - //shared

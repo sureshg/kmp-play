@@ -2,14 +2,14 @@ product:
   type: jvm/app
 
 apply:
-  - ../../shared/common.module-template.yaml
+  - //shared/common.module-template.yaml
 
 settings:
   jvm:
     mainClass: AppKt
 
 dependencies:
-  - ../../shared
+  - //shared
   - $libs.slf4j.simple
   - $libs.voices.chorus
   - $libs.voices.alba

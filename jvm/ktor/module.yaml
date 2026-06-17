@@ -2,7 +2,7 @@ product:
   type: jvm/app
 
 apply:
-  - ../../shared/common.module-template.yaml
+  - //shared/common.module-template.yaml
 
 settings:
   ktor:
@@ -12,7 +12,7 @@ settings:
     mainClass: AppKt
 
 dependencies:
-  - ../../shared
+  - //shared
   - $libs.ktor.server.core
   - $libs.ktor.server.di
   - $libs.ktor.server.netty

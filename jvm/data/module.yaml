@@ -2,7 +2,7 @@ product:
   type: jvm/app
 
 apply:
-  - ../../shared/common.module-template.yaml
+  - //shared/common.module-template.yaml
 
 settings:
   jvm:
@@ -13,6 +13,6 @@ settings:
         dependency: $libs.kotlinx.dataframe.compilerPlugin
 
 dependencies:
-  - ../../shared
+  - //shared
   - $libs.kotlinx.dataframe.core
   - $libs.slf4j.simple
