@@ -140,7 +140,7 @@ settings@jvm:
 
   jvm:
     test:
-      junitPlatformVersion: 6.1.0
+      junitPlatformVersion: 6.1.1
       freeJvmArgs:
         - --enable-preview
         - --enable-native-access=ALL-UNNAMED
