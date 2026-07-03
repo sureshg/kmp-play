@@ -107,7 +107,7 @@ object WinUser {
   }
 
   private fun fetchGroupSids(arena: Arena, token: MemorySegment): List<String> {
-    val info = getTokenInfo(arena, token, TOKEN_GROUPS) ?: return emptyList()
+    val info = getTokenInfo(arena, token, TOKEN_GROUPS) ?: return []
     val count = info.get(C_INT, 0)
     return (0 until count).mapNotNull { i ->
       sidToString(arena, info.get(C_POINTER, TOKEN_GROUPS_ARRAY_OFFSET + i * SID_ATTR_SIZE))

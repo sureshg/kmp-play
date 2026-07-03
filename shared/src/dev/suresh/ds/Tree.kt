@@ -17,12 +17,12 @@ enum class Order {
 
 fun <T> Tree<T>.dfs(order: Order = IN): List<T> =
     when (this) {
-      Empty -> emptyList()
+      Empty -> []
       is Node<T> -> {
         val (value, left, right) = this
         when (order) {
           IN -> left.dfs(order) + value + right.dfs(order)
-          PRE -> listOf(value) + left.dfs(order) + right.dfs(order)
+          PRE -> [value] + left.dfs(order) + right.dfs(order)
           POST -> left.dfs(order) + right.dfs(order) + value
         }
       }
@@ -57,13 +57,12 @@ fun <T> Tree<T>.dfsTo(order: Order = IN, dest: MutableList<T>) {
 }
 
 fun <T> Tree<T>.bfs(): List<T> {
-  val result = mutableListOf<T>()
+  val result: MutableList<T> = []
   val queue = ArrayDeque<Tree<T>>()
   queue.add(this)
 
   while (queue.isNotEmpty()) {
-    val curr = queue.removeFirst()
-    when (curr) {
+    when (val curr = queue.removeFirst()) {
       Empty -> continue
       is Node<T> -> {
         result.add(curr.value)

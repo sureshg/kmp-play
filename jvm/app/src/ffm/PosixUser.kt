@@ -27,7 +27,7 @@ object PosixUser {
   private const val GETPW_R_SIZE_MAX = 4096
 
   private val requiresIntAsLong =
-      System.getProperty("os.arch", "").lowercase() in setOf("ppc64", "ppc64le", "s390x")
+      System.getProperty("os.arch", "").lowercase() in ["ppc64", "ppc64le", "s390x"]
 
   private val mhGetgroups =
       downcallHandle(

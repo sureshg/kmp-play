@@ -11,8 +11,8 @@ import kotlin.concurrent.atomics.AtomicBoolean
 
 class CurlLoggingConfig {
   var logger: KLogger? = null
-  var redactedHeaders = setOf(HttpHeaders.Authorization)
-  var redactedQueryParams = setOf("api_key", "token", "sig", "access_token")
+  var redactedHeaders: Set<String> = [HttpHeaders.Authorization]
+  var redactedQueryParams: Set<String> = ["api_key", "token", "sig", "access_token"]
   var enabled = AtomicBoolean(true)
 }
 
