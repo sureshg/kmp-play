@@ -1,5 +1,5 @@
 modules:
-# - "*-cli"
+  # - "*-cli"
   - jvm/app
   - jvm/compose
   - jvm/data
