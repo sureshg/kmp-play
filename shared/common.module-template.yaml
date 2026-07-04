@@ -93,11 +93,11 @@ settings:
     # artifactId: shared
     group: dev.suresh.amper
     version: 1.0.0-SNAPSHOT
+    signArtifacts: true
+    publishSources: true
     mavenCentral:
       enabled: false
       publishingMode: auto
-    signArtifacts: true
-    publishSources: true
     pom:
       url: https://github.com/sureshg/kmp-play
       scm: https://github.com/sureshg/kmp-play.git
