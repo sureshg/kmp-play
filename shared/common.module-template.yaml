@@ -30,7 +30,6 @@ settings:
     languageVersion: 2.4
     apiVersion: 2.4
     progressiveMode: true
-    powerAssert: enabled
     allWarningsAsErrors: false
     suppressWarnings: false
     verbose: false
@@ -81,7 +80,7 @@ settings:
       format: json
 
     ksp:
-      version: 2.3.9
+      version: 2.3.10
 
     rpc:
       enabled: true
