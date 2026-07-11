@@ -8,11 +8,11 @@ settings:
   jvm:
     mainClass: DFrameKt
   kotlin:
-    compilerPlugins:
-      - id: org.jetbrains.kotlin.dataframe
-        dependency: $libs.kotlinx.dataframe.compilerPlugin
+    dataframe:
+      enabled: true
+      version: 1.0.0-Beta5
 
 dependencies:
   - //shared
-  - $libs.kotlinx.dataframe.core
+  - $kotlin.dataframe.csv
   - $libs.slf4j.simple

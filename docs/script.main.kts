@@ -19,6 +19,9 @@ import kotlinx.coroutines.*
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
+// val pluginJar = Unit::class.java.protectionDomain.codeSource.location.toURI().toPath().parent /
+// "kotlinx-serialization-compiler-plugin.jar"
+
 @Serializable data class Lang(val name: String, val version: String)
 
 val arg = args.firstOrNull() ?: "Kotlin"
@@ -29,7 +32,7 @@ val serialized = Json.encodeToString(Lang("Kotlin", KotlinVersion.CURRENT.toStri
 
 println(serialized)
 
-val javaVer: String = System.getProperty("java.version")
+val javaVer = System.getProperty("java.version")
 val deserialized = Json.decodeFromString<Lang>("""{"name" : "Java", "version": "$javaVer"}""")
 
 println(deserialized)

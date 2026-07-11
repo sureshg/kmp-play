@@ -8,7 +8,7 @@ kotlinx-io                     = "0.9.1"
 kotlinx-atomicfu               = "0.33.0"
 kotlinx-coroutines             = "1.11.0"
 kotlinx-datetime               = "0.8.0"
-kotlinx-datetime-zoneinfo      = "2026b-spi.0.8.0"
+kotlinx-datetime-zoneinfo      = "2026c-spi.0.8.0"
 kotlinx-serialization          = "1.11.0"
 xmlutil                        = "1.0.1"
 kotlinx-rpc                    = "0.10.3"
@@ -53,15 +53,15 @@ ktor-cohort                    = "2.9.10"
 java-http                      = "1.4.0"
 fusionauth-jwt                 = "6.0.0"
 fusionauth-samlv2              = "1.1.2"
-otel                           = "1.63.0"
-otel-alpha                     = "1.63.0-alpha"
+otel                           = "1.64.0"
+otel-alpha                     = "1.64.0-alpha"
 otel-instr                     = "2.29.0"
 otel-instr-alpha               = "2.29.0-alpha"
 otel-semconv                   = "1.43.0"
 otel-contrib                   = "1.58.0-alpha"
 otel-kotlin                    = "0.5.0"
 tracy-ktor                     = "0.1.0"
-jackson                        = "3.2.0"
+jackson                        = "3.2.1"
 bc                             = "1.84"
 okio                           = "3.17.0"
 ayza                           = "10.0.5"
@@ -78,7 +78,7 @@ ajalt-colormath                = "3.6.1"
 jline                          = "4.3.1"
 classgraph                     = "4.8.184"
 cache4k                        = "0.14.0"
-intellij-markdown              = "0.7.6"
+intellij-markdown              = "0.7.7"
 jgit                           = "7.7.0.202606012155-r"
 jte                            = "3.2.4"
 sshj                           = "0.40.0"
@@ -200,7 +200,7 @@ voices                         = "0.0.9"
 inference4j                    = "0.10.0"
 onnx                           = "1.27.0"
 angus-mail                     = "2.1.0-M1"
-simplemail                     = "9.0.1"
+simplemail                     = "9.0.4"
 javelit                        = "0.89.0"
 jwalker                        = "1.1.0"
 hashsmith                      = "0.2.0"
@@ -268,11 +268,6 @@ kotlinx-browser                      = { module = "org.jetbrains.kotlinx:kotlinx
 kotlinx-bench-runtime                = { module = "org.jetbrains.kotlinx:kotlinx-benchmark-runtime"                      , version.ref = "kotlinx-benchmark"}
 kotlinx-multik-default               = { module = "org.jetbrains.kotlinx:multik-default"                                 , version.ref = "kotlinx-multik"}
 kotlinx-dataframe                    = { module = "org.jetbrains.kotlinx:dataframe"                                      , version.ref = "kotlinx-dataframe"}
-kotlinx-dataframe-core               = { module = "org.jetbrains.kotlinx:dataframe-core"                                 , version.ref = "kotlinx-dataframe"}
-kotlinx-dataframe-csv                = { module = "org.jetbrains.kotlinx:dataframe-csv"                                  , version.ref = "kotlinx-dataframe"}
-kotlinx-dataframe-geo                = { module = "org.jetbrains.kotlinx:dataframe-json"                                 , version.ref = "kotlinx-dataframe"}
-kotlinx-dataframe-jdbc               = { module = "org.jetbrains.kotlinx:dataframe-jdbc"                                 , version.ref = "kotlinx-dataframe"}
-kotlinx-dataframe-compilerPlugin     = { module = "org.jetbrains.kotlin:kotlin-dataframe-compiler-plugin-experimental"   , version.ref = "kotlin"}
 kotlinx-kandy                        = { module = "org.jetbrains.kotlinx:kandy-lets-plot"                                , version.ref = "kotlinx-kandy"}
 kotlinx-kandy-geo                    = { module = "org.jetbrains.kotlinx:kandy-geo"                                      , version.ref = "kotlinx-kandy"}
 kotlinx-kandy-echarts                = { module = "org.jetbrains.kotlinx:kandy-echarts"                                  , version.ref = "kotlinx-kandy"}
