@@ -1,9 +1,8 @@
 import dev.suresh.MediaApiClient
 import dev.suresh.Video
 import io.github.oshai.kotlinlogging.KotlinLoggingConfiguration
-import kotlinx.coroutines.runBlocking
 
-fun main() = runBlocking { mediaClient() }
+fun main() = runMain { mediaClient() }
 
 suspend fun mediaClient() {
   KotlinLoggingConfiguration.logStartupMessage = false

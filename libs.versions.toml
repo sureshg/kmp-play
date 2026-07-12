@@ -127,6 +127,7 @@ urlencoder                     = "1.6.0"
 bytesize                       = "2.2.1"
 cash-turbine                   = "1.2.1"
 cardiologist                   = "0.8.0"
+jwt-kt                         = "1.3.0"
 kmp-settings                   = "1.3.0"
 kmp-appdirs                    = "2.0.0"
 parsus                         = "0.6.1"
@@ -200,7 +201,7 @@ voices                         = "0.0.9"
 inference4j                    = "0.10.0"
 onnx                           = "1.27.0"
 angus-mail                     = "2.1.0-M1"
-simplemail                     = "9.0.4"
+simplemail                     = "9.1.0"
 javelit                        = "0.89.0"
 jwalker                        = "1.1.0"
 hashsmith                      = "0.2.0"
@@ -448,6 +449,7 @@ tsid                                 = { module = "io.hypersistence:hypersistenc
 kotlin-retry                         = { module = "com.michael-bull.kotlin-retry:kotlin-retry"                 , version.ref = "kotlin-retry" }
 kotlin-retry-result                  = { module = "com.michael-bull.kotlin-retry:kotlin-retry-result"          , version.ref = "kotlin-retry" }
 cardiologist                         = { module = "io.github.kevincianfarini.cardiologist:cardiologist"        , version.ref = "cardiologist" }
+jwt-kt                               = { module = "com.appstractive:jwt-kt"                                    , version.ref = "jwt-kt" }
 kotest-core                          = { module = "io.kotest:kotest-assertions-core"                           , version.ref = "kotest"}
 kotest-junit5                        = { module = "io.kotest:kotest-runner-junit5"                             , version.ref = "kotest"}
 intellij-markdown                    = { module = "org.jetbrains:markdown"                                     , version.ref = "intellij-markdown"}
