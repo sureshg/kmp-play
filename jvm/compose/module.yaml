@@ -8,7 +8,7 @@ settings:
   jvm:
     mainClass: MainKt
   compose:
-    version: 1.12.0-beta01
+    version: 1.12.0-beta02
     enabled: true
     experimental:
       hotReload:
