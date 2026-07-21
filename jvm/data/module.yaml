@@ -10,7 +10,7 @@ settings:
   kotlin:
     dataframe:
       enabled: true
-      version: 1.0.0-Beta5
+      version: 1.0.0-rc01
 
 dependencies:
   - //shared
