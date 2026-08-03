@@ -11,9 +11,9 @@ modules:
   - plugins/build-config
   - plugins/native-image
   - shared
-# - web/js
-# - web/wasi
-# - web/wasm
+  # - web/js
+  # - web/wasi
+  # - web/wasm
 
 plugins:
   - //plugins/build-config
