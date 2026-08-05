@@ -6,8 +6,8 @@ product:
     - linuxX64
     - macosArm64
     - mingwX64
-  # - js
-  # - wasmJs
+    - js
+    - wasmJs
 
 description: |
   Common shared library
