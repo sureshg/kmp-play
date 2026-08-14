@@ -1,6 +1,5 @@
 product:
   type: macos/app
-  platforms: [ macosArm64 ]
 
 apply:
   - //shared/common.module-template.yaml
