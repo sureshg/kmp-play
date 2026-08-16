@@ -1,0 +1,10 @@
+product:
+  type: jvm/app
+
+apply:
+  - //tmpl/compose.module-template.yaml
+
+dependencies:
+  - //compose/cmp-shared
+  - $libs.slf4j.simple
+  - $compose.desktop.currentOs

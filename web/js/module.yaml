@@ -2,7 +2,7 @@ product:
   type: js/app
 
 apply:
-  - //shared/common.module-template.yaml
+  - //tmpl/common.module-template.yaml
 
 dependencies:
   - //shared

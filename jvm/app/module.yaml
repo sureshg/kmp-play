@@ -2,7 +2,7 @@ product:
   type: jvm/app
 
 apply:
-  - //shared/common.module-template.yaml
+  - //tmpl/common.module-template.yaml
 
 settings:
   jvm:

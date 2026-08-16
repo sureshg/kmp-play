@@ -1,7 +1,8 @@
 modules:
-  # - "*-cli"
+  - compose/cmp-app
+  - compose/cmp-shared
+  - compose/cmp-wasm
   - jvm/app
-  - jvm/compose
   - jvm/data
   - jvm/ktor
   - native/cinterop
@@ -12,7 +13,7 @@ modules:
   - plugins/native-image
   - shared
   - web/js
-# - web/wasi
+  - web/wasi
   - web/wasm
 
 plugins:

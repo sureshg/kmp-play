@@ -2,7 +2,4 @@ product:
   type: wasm-wasi/app
 
 apply:
-  - //shared/common.module-template.yaml
-
-dependencies:
-  - //shared
+  - //tmpl/common.module-template.yaml

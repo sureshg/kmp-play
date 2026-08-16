@@ -8,6 +8,9 @@ repositories:
 #
 # - id: mavenCentral
 #   url: https://repo.maven.apache.org/maven2/
+#
+# - id: mavenGoogle
+#   url: https://maven.google.com
 #   resolve: false
 #
 # - id: mavenSnapshot
@@ -134,9 +137,9 @@ settings@jvm:
       # - -Xmodule-path=
       # - -Xjavac-arguments="--add-exports java.base/sun.nio.ch=ALL-UNNAMED"
       # - -Xexplicit-api=strict
-    ksp:
-      processors:
-        - $libs.ksp.auto.service
+    # ksp:
+    #  processors:
+    #    - $libs.ksp.auto.service
 
   jvm:
     test:
@@ -174,7 +177,6 @@ settings@web:
     optIns:
       - kotlin.js.ExperimentalJsExport
       - kotlin.js.ExperimentalWasmJsInterop
-
     jsPlainObjects: enabled
 
 test-settings:

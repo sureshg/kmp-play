@@ -1,0 +1,12 @@
+product:
+  type: kmp/lib
+  platforms: [ jvm, wasmJs ]
+
+apply:
+  - //tmpl/compose.module-template.yaml
+
+settings:
+  compose:
+    resources:
+      packageName: dev.suresh.gen
+      exposedAccessors: true
