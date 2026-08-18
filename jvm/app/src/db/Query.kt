@@ -81,6 +81,7 @@ fun select() {
   println("SQL: ${s.buildPrettyFor.Postgres().value}")
 }
 
+@Suppress("UNUSED_VARIABLE")
 fun insert(p: People) {
   val set = sql { insert<People> { set(name to "xxxx") } }
 

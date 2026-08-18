@@ -51,6 +51,7 @@ settings:
       # - -Xannotation-target-all
       # - -Xskip-prerelease-check
       # - -Xsuppress-warning=CAN_BE_VAL
+      # - -Xrender-internal-diagnostic-names
       # - -Xwarning-level=UNCHECKED_CAST:error
     compilerPlugins:
       - id: dev.zacsweers.redacted.compiler
