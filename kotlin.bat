@@ -17,9 +17,9 @@
 setlocal
 
 @rem The version of the Kotlin Toolchain distribution to provision and use
-set kotlin_cli_version=0.12.0-dev-4300
+set kotlin_cli_version=0.13.0-dev-4311
 @rem Establish chain of trust from here by specifying the exact checksum of the Kotlin Toolchain distribution to be run
-set kotlin_cli_sha256=2adea69cca315c842a67eedb61051c37e2866f8ec19ec0499ba7534d9503c050
+set kotlin_cli_sha256=dbce91ae6bd9e2c6aac8fac1965804f9ed6d38fbda8bd0f29f48f827a08f060b
 
 if not defined KOTLIN_CLI_DOWNLOAD_ROOT set KOTLIN_CLI_DOWNLOAD_ROOT=https://packages.jetbrains.team/maven/p/amper/amper
 if not defined KOTLIN_CLI_BOOTSTRAP_CACHE_DIR set KOTLIN_CLI_BOOTSTRAP_CACHE_DIR=%LOCALAPPDATA%\JetBrains\Kotlin\cli
@@ -175,7 +175,7 @@ if exist "%wrapper_candidate%" (
 
 if exist "%project_dir%\project.yaml" (
     @rem Found project.yaml but no wrapper alongside it
-    echo WARNING: Found a project.yaml in '%project_dir%', but the wrapper script is missing; using Kotlin Toolchain v$kotlin_cli_version. >&2
+    echo WARNING: Found a project.yaml in '%project_dir%', but the wrapper script is missing; using Kotlin Toolchain v%kotlin_cli_version%. >&2
     exit /b 1
 )
 
