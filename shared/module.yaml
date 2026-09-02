@@ -77,5 +77,6 @@ test-dependencies@jvm:
   - $libs.testcontainers.postgresql: exported
 
 plugins:
+  bcv: enabled
   build-config:
     enabled: true

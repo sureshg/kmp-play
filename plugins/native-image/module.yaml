@@ -5,9 +5,9 @@ product: jvm/amper-plugin
 
 description: Native Image plugin for the Kotlin Toolchain
 
-dependencies:
-  - $libs.ktor.client.cio: runtime-only
-
 pluginInfo:
   id: native-image
   settingsClass: Settings
+
+dependencies:
+  - $libs.ktor.client.cio: runtime-only

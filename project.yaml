@@ -9,6 +9,7 @@ modules:
   - native/linux
   - native/macos
   - native/windows
+  - plugins/bcv
   - plugins/build-config
   - plugins/native-image
   - shared
@@ -19,3 +20,4 @@ modules:
 plugins:
   - //plugins/build-config
   - //plugins/native-image
+  - //plugins/bcv

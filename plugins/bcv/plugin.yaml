@@ -1,0 +1,25 @@
+tasks:
+  apiBuild:
+    action: !kotlinApiBuildTask
+      settings: ${pluginSettings}
+      inputJar: ${module.jar}
+      outputApiFile: ${taskOutputDir}/api.dump
+
+  apiCheck:
+    action: !kotlinApiCompareTask
+      moduleName: ${module.name}
+      builtApiFile: ${tasks.apiBuild.action.outputApiFile}
+      projectApiFile: ${module.rootDir}/${pluginSettings.apiDumpDirectoryName}/${module.name}.api
+
+  apiDump:
+    action: !kotlinApiDumpTask
+      builtApiFile: ${tasks.apiBuild.action.outputApiFile}
+      projectApiFile: ${tasks.apiCheck.action.projectApiFile}
+
+checks:
+  - performedBy: apiCheck
+    name: binaryCompatibility
+
+commands:
+  - name: updateBinaryCompatibilityBaseline
+    performedBy: apiDump
