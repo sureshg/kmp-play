@@ -2,7 +2,7 @@ product:
   type: wasm-js/app
 
 apply:
-  - //tmpl/compose.module-template.yaml
+  - //build-logic/templates/compose.module-template.yaml
 
 dependencies:
   - //compose/cmp-shared

@@ -1,14 +1,14 @@
 package dev.suresh.serde
 
-import kotlin.reflect.KClass
-import kotlin.time.Duration
-import kotlin.time.Instant
-import kotlin.uuid.Uuid
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.*
 import kotlinx.serialization.json.*
 import kotlinx.serialization.serializerOrNull
+import kotlin.reflect.KClass
+import kotlin.time.Duration
+import kotlin.time.Instant
+import kotlin.uuid.Uuid
 
 val BUILTIN_SERIALIZERS: Map<KClass<*>, KSerializer<*>> by lazy {
   mapOf(

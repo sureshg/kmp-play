@@ -1,5 +1,5 @@
-import kotlinx.coroutines.*
 import kotlin.native.Platform
+import kotlinx.coroutines.*
 
 actual class Platform {
   actual fun name() = "Kotlin Native ${Platform.osFamily.name}"

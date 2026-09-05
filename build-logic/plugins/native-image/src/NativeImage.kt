@@ -1,10 +1,10 @@
+import org.jetbrains.amper.plugins.*
 import java.io.File
 import java.nio.file.Path
 import kotlin.io.path.createDirectories
 import kotlin.io.path.createParentDirectories
 import kotlin.io.path.div
 import kotlin.io.path.exists
-import org.jetbrains.amper.plugins.*
 
 fun graalBin(): Path {
   val javaHome =

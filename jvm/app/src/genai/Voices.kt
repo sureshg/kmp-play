@@ -1,10 +1,10 @@
 package genai
 
+import kotlin.io.path.Path
 import org.pitest.voices.Chorus
 import org.pitest.voices.ChorusConfig
 import org.pitest.voices.alba.Alba
 import org.pitest.voices.us.EnUsDictionary
-import kotlin.io.path.Path
 
 fun voices() {
   val chorusCfg = ChorusConfig(EnUsDictionary.en_us())

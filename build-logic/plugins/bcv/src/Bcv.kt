@@ -1,13 +1,13 @@
 import com.github.difflib.DiffUtils
 import com.github.difflib.UnifiedDiffUtils
+import java.nio.file.Path
+import java.util.jar.JarFile
+import kotlin.io.path.*
 import kotlinx.validation.api.*
 import org.jetbrains.amper.plugins.CompilationArtifact
 import org.jetbrains.amper.plugins.Input
 import org.jetbrains.amper.plugins.Output
 import org.jetbrains.amper.plugins.TaskAction
-import java.nio.file.Path
-import java.util.jar.JarFile
-import kotlin.io.path.*
 
 @TaskAction
 fun kotlinApiDumpTask(

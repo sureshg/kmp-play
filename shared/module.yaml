@@ -16,7 +16,7 @@ aliases:
   nonJvm: [ linuxArm64, linuxX64, macosArm64, mingwX64 ]
 
 apply:
-  - //tmpl/common.module-template.yaml
+  - //build-logic/templates/common.module-template.yaml
 
 dependencies:
   - bom: $libs.kotlin.bom

@@ -1,4 +1,7 @@
 modules:
+  - build-logic/plugins/bcv
+  - build-logic/plugins/build-config
+  - build-logic/plugins/native-image
   - compose/cmp-app
   - compose/cmp-shared
   - compose/cmp-wasm
@@ -9,15 +12,12 @@ modules:
   - native/linux
   - native/macos
   - native/windows
-  - plugins/bcv
-  - plugins/build-config
-  - plugins/native-image
   - shared
   - web/js
   - web/wasi
   - web/wasm
 
 plugins:
-  - //plugins/build-config
-  - //plugins/native-image
-  - //plugins/bcv
+  - //build-logic/plugins/bcv
+  - //build-logic/plugins/native-image
+  - //build-logic/plugins/build-config

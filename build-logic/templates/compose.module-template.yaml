@@ -1,5 +1,5 @@
 apply:
-  - //tmpl/common.module-template.yaml
+  - //build-logic/templates/common.module-template.yaml
 
 settings:
   kotlin:

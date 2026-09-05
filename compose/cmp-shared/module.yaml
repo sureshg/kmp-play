@@ -3,7 +3,7 @@ product:
   platforms: [ jvm, wasmJs ]
 
 apply:
-  - //tmpl/compose.module-template.yaml
+  - //build-logic/templates/compose.module-template.yaml
 
 settings:
   compose:

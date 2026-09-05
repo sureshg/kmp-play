@@ -14,10 +14,10 @@
 @file:CompilerOptions("-jvm-target", "21")
 
 import com.microsoft.playwright.*
-import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.*
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
+import kotlin.time.Duration.Companion.seconds
 
 // val pluginJar = Unit::class.java.protectionDomain.codeSource.location.toURI().toPath().parent /
 // "kotlinx-serialization-compiler-plugin.jar"
