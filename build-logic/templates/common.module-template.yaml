@@ -29,9 +29,10 @@ settings:
       # selectionMode: javaHome
 
   kotlin:
-    version: 2.4.20-RC3
+    version: 2.4.20
     languageVersion: 2.4
     apiVersion: 2.4
+    explicitApi: disable
     progressiveMode: true
     allWarningsAsErrors: false
     suppressWarnings: false
@@ -137,7 +138,6 @@ settings@jvm:
       # - -Xadd-modules=ALL-MODULE-PATH
       # - -Xmodule-path=
       # - -Xjavac-arguments="--add-exports java.base/sun.nio.ch=ALL-UNNAMED"
-      # - -Xexplicit-api=strict
     # ksp:
     #  processors:
     #    - $libs.ksp.auto.service
