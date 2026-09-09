@@ -8,6 +8,7 @@ import io.ktor.client.call.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.resources.*
 import io.ktor.client.request.*
+import io.ktor.http.*
 import io.ktor.resources.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonIgnoreUnknownKeys
@@ -66,9 +67,17 @@ data class MediaApiClient(val timeout: Timeout = Timeout(), val retry: Retry = R
 
   suspend fun videos() = client.get(VideoRes()).body<List<Video>>()
 
-  suspend fun addVideo(video: Video) = client.post(VideoRes()) { setBody(video) }
+  suspend fun addVideo(video: Video) =
+      client.post(VideoRes()) {
+        contentType(ContentType.Application.Json)
+        setBody(video)
+      }
 
-  suspend fun updateVideo(video: Video) = client.put(VideoRes()) { setBody(video) }
+  suspend fun updateVideo(video: Video) =
+      client.put(VideoRes()) {
+        contentType(ContentType.Application.Json)
+        setBody(video)
+      }
 
   override fun close() = client.close()
 }

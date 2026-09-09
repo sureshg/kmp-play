@@ -6,3 +6,4 @@ apply:
 
 dependencies:
   - //shared
+  - $libs.kotlinx.html

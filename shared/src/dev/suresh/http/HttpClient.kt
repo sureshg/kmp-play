@@ -12,7 +12,6 @@ import io.ktor.client.plugins.sse.*
 import io.ktor.client.plugins.websocket.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
-import io.ktor.util.*
 import kotlinx.serialization.json.Json
 
 /** Common JSON instance for serde of JSON data. */
@@ -106,13 +105,6 @@ fun defaultHttpClientConfig(
 
   install(UserAgent) { agent = name }
 
-  install(DefaultRequest) {
-    headers.appendIfNameAndValueAbsent(
-        HttpHeaders.ContentType,
-        ContentType.Application.Json.toString(),
-    )
-  }
-
   install(SSE) {
     maxReconnectionAttempts = retry.attempts
     reconnectionTime = timeout.connection
@@ -126,6 +118,13 @@ fun defaultHttpClientConfig(
     logger = httpLogger
   }
 
+  // install(DefaultRequest) {
+  //     headers.appendIfNameAndValueAbsent(
+  //         HttpHeaders.ContentType,
+  //         ContentType.Application.Json.toString(),
+  //     )
+  // }
+  //
   // install(SaveBodyPlugin) {
   //   disabled = true
   // }
