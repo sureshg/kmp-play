@@ -1,1 +1,3 @@
-
+suspend fun main() {
+  mediaClient()
+}
