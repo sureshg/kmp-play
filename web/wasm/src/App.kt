@@ -3,8 +3,6 @@ import kotlinx.browser.document
 import kotlinx.html.*
 import kotlinx.html.dom.append
 
-private const val IMAGE_ROOT = "https://suresh.dev/media-api/"
-
 suspend fun main() {
   val client = MediaApiClient()
   val images = client.images()
@@ -21,7 +19,10 @@ suspend fun main() {
         div(classes = "media-grid") {
           images.forEach { image ->
             figure {
-              img(src = "$IMAGE_ROOT${image.path}", alt = "${image.category} by ${image.author}") {
+              img(
+                  src = "https://suresh.dev/media-api/${image.path}",
+                  alt = "${image.category} by ${image.author}",
+              ) {
                 attributes["loading"] = "lazy"
               }
               figcaption {
@@ -49,6 +50,18 @@ suspend fun main() {
               }
             }
           }
+        }
+      }
+
+      footer {
+        a(
+            href = "https://kotlin-toolchain.org/dev/user-guide/product-types/wasm-js-app/",
+            classes = "toolchain-link",
+        ) {
+          target = ATarget.blank
+          attributes["rel"] = "noopener noreferrer"
+          img(src = "https://kotlin-toolchain.org/latest/images/amper-icon.svg", alt = "")
+          +"Developed using Kotlin Toolchain"
         }
       }
     }
