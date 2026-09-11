@@ -86,7 +86,7 @@ settings:
       format: json
 
     ksp:
-      version: 2.3.11
+      version: 2.3.12
 
     rpc:
       enabled: false
