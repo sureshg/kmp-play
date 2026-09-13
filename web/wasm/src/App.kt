@@ -23,7 +23,7 @@ suspend fun main() {
                   src = "https://suresh.dev/media-api/${image.path}",
                   alt = "${image.category} by ${image.author}",
               ) {
-                attributes["loading"] = "lazy"
+                loading = ImgLoading.lazy
               }
               figcaption {
                 strong { +image.category }
@@ -59,7 +59,7 @@ suspend fun main() {
             classes = "toolchain-link",
         ) {
           target = ATarget.blank
-          attributes["rel"] = "noopener noreferrer"
+          rel = "noopener noreferrer"
           img(src = "https://kotlin-toolchain.org/latest/images/amper-icon.svg", alt = "")
           +"Developed using Kotlin Toolchain"
         }

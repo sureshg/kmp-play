@@ -60,11 +60,17 @@ jobs:
             ./kotlin build -m wasm -v release
           fi
 
+      - name: 📦 Prepare Pages directory
+        if: github.event_name == 'push' && github.ref_name == 'main'
+        run: |
+          mkdir -p dist/wasmjs
+          cp -R build/tasks/_wasm_buildWasmJsAppWasmJsRelease/* dist/wasmjs/
+
       - name: 📄 Upload GitHub Pages artifact
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref_name == 'main'
         uses: actions/upload-pages-artifact@v5
         with:
-          path: build/tasks/_wasm_buildWasmJsAppWasmJsRelease
+          path: dist
 
       - name: 🔭 Upload OpenTelemetry traces
         if: always()
@@ -117,7 +123,7 @@ jobs:
 
   deploy-pages:
     name: 🚀 Deploy GitHub Pages
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref_name == 'main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
