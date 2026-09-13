@@ -28,7 +28,7 @@ defaults:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref_name != 'main' }}
 
 env:
   KOTLIN_TASK: ${{ inputs.task || 'package' }}
@@ -58,13 +58,9 @@ jobs:
           else
             ./kotlin package
             ./kotlin build -m wasm -v release
+            mkdir -p dist/wasmjs
+            cp -R build/tasks/_wasm_buildWasmJsAppWasmJsRelease/* dist/wasmjs/
           fi
-
-      - name: 📦 Prepare Pages directory
-        if: github.event_name == 'push' && github.ref_name == 'main'
-        run: |
-          mkdir -p dist/wasmjs
-          cp -R build/tasks/_wasm_buildWasmJsAppWasmJsRelease/* dist/wasmjs/
 
       - name: 📄 Upload GitHub Pages artifact
         if: github.event_name == 'push' && github.ref_name == 'main'
