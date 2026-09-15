@@ -10,7 +10,6 @@ import kotlinx.schema.json.encodeToString
 
 suspend fun main() {
   System.setProperty("slf4j.internal.verbosity", "WARN")
-  // select()
   println(PosixUser)
   mediaClient()
   vectorApi()
