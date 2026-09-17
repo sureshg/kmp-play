@@ -15,9 +15,9 @@ suspend fun main() {
   println(PosixUser)
   mediaClient()
   vectorApi()
-  syntaxHighlight()
   jsonSchema()
   tts()
+  // syntaxHighlight()
 }
 
 fun syntaxHighlight() {

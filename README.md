@@ -107,6 +107,8 @@ $ sdk i java 25.0.2-graalce
 
 # Build the native image
 $ ./kotlin check -m ktor graalVMCheck
+
+$ ./kotlin task :ktor:runTracingAgent@native-image
 $ ./kotlin task :ktor:buildNativeImage@native-image
 
 # Run the native image

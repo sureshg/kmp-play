@@ -1,6 +1,7 @@
 package ai
 
 import com.qxotic.jinfer.langchain4j.JinferSpeechModel
+import kotlin.io.path.*
 
 fun tts() {
   JinferSpeechModel.builder()
@@ -10,17 +11,10 @@ fun tts() {
       // .companion("lexicon", "remixerdec/Inflect-Nano-v2-GGUF/lexicon.bin")
       .build()
       .use {
-        println(
-            it.synthesize(
-                    """
-                    Kotlin is a modern, statically typed programming language developed by JetBrains, 
-                    the company behind popular IDEs like IntelliJ IDEA. It is designed to run on the 
-                    Java Virtual Machine (JVM) and is fully interoperable with Java, allowing developers 
-                    to use Java libraries and frameworks seamlessly within Kotlin projects.
-                    """
-                        .trimIndent()
-                )
-                .audio()
-        )
+        val audio =
+            it.synthesize("Kotlin is a modern, statically typed programming language!").audio()
+        val audioPath = Path("build/kotlin.wav")
+        audioPath.writeBytes(audio.binaryData())
+        println("Speech file: ${audioPath.absolutePathString()}")
       }
 }
