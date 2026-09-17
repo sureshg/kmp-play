@@ -10,10 +10,11 @@ settings:
 
 dependencies:
   - //shared
+  - bom: $libs.qxotic.bom
+  - $libs.qxotic.jinfer.langchain4j
+  - $libs.qxotic.jinfer.models
+  - $libs.qxotic.jam.native
+  - $libs.qxotic.jam.vector
   - $libs.slf4j.simple
-  - $libs.voices.chorus
-  - $libs.voices.alba
-  - $libs.voices.en.us
-  - $libs.onnxruntime
   - $libs.lumis4j
   - $libs.exoquery.runner.jdbc

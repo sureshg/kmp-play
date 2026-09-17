@@ -1,5 +1,5 @@
-import org.junit.jupiter.api.Tag
 import kotlin.test.Test
+import org.junit.jupiter.api.Tag
 
 class AppTest {
 

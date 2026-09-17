@@ -78,5 +78,5 @@ test-dependencies@jvm:
 
 plugins:
   bcv: enabled
-  build-config:
-    enabled: true
+# build-config:
+#    enabled: true

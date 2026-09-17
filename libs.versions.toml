@@ -11,7 +11,7 @@ kotlinx-datetime               = "0.8.0"
 kotlinx-datetime-zoneinfo      = "2026d-spi.0.8.0"
 kotlinx-serialization          = "1.12.0-RC"
 xmlutil                        = "1.0.2.1"
-kotlinx-rpc                    = "0.10.3"
+kotlinx-rpc                    = "0.10.4"
 kotlinx-dataframe              = "1.0.0-rc01"
 kotlinx-kandy                  = "0.8.5"
 kotlinx-collections-immutable  = "0.5.2"
@@ -23,7 +23,7 @@ kotlinx-metadata               = "0.9.0"
 kotlinx-schema                 = "0.6.0"
 kotlinx-reflect-lite           = "1.2.0-RC"
 kotlin-lincheck                = "3.7"
-kotlin-wrappers                = "2026.9.1"
+kotlin-wrappers                = "2026.9.2"
 kotlin-redacted                = "1.18.0"
 kotlin-serviceloader           = "0.0.24"
 kotlinx-multik                 = "0.3.1"
@@ -41,11 +41,11 @@ kopy                           = "0.26.0+2.4.20"
 poko                           = "0.23.1"
 mappie                         = "2.4.0-2.4.1"
 akkurate                       = "0.11.0"
-kotaml                         = "0.110.0"
+kotaml                         = "0.111.0"
 snakeyaml-engine-kmp           = "4.0.1"
 konsist                        = "0.17.3"
 spring-boot                    = "4.0.6"
-ktor                           = "3.5.2"
+ktor                           = "3.6.0"
 webauthn4j                     = "0.31.10.RELEASE"
 swagger-ui                     = "5.32.15"
 swagger-codegen                = "3.0.82"
@@ -59,7 +59,7 @@ otel-instr                     = "2.31.1"
 otel-instr-alpha               = "2.31.1-alpha"
 otel-semconv                   = "1.44.0"
 otel-contrib                   = "1.60.0-alpha"
-otel-kotlin                    = "0.7.0"
+otel-kotlin                    = "0.8.0"
 tracy-ktor                     = "0.1.0"
 jackson                        = "3.2.2"
 bc                             = "1.86"
@@ -75,10 +75,10 @@ kompress                       = "2.3.1"
 ajalt-mordant                  = "3.1.0"
 ajalt-clikt                    = "5.1.0"
 ajalt-colormath                = "3.7.0"
-jline                          = "4.4.3"
+jline                          = "4.4.5"
 classgraph                     = "4.8.195"
 cache4k                        = "0.14.0"
-intellij-markdown              = "0.7.13"
+intellij-markdown              = "0.7.14"
 jgit                           = "7.8.0.202609011348-r"
 jte                            = "3.2.4"
 sshj                           = "0.40.0"
@@ -169,7 +169,7 @@ xchart                         = "4.0.4"
 batik                          = "1.19"
 twelvemonkeys                  = "3.15.1"
 okapibarcode                   = "0.5.6"
-chasm                          = "1.7.0"
+chasm                          = "2.0.0"
 chasm-plugin                   = "2.0.2-1.4.6"
 cel                            = "0.14.0"
 kfswatch                       = "1.4.0"
@@ -180,12 +180,11 @@ langchain4j                    = "1.20.0"
 langchain4j-kotlin             = "0.3.0"
 mcp-kotlin                     = "0.15.0"
 koog                           = "1.2.0"
-dokimos                        = "0.27.0"
+dokimos                        = "0.28.0"
 kregex                         = "0.4.0"
 mcp4k                          = "0.4.11"
 dflib                          = "2.0.0-M7"
 ldaptive                       = "2.5.1"
-chicory                        = "1.7.5"
 weh-bindings                   = "0.6.0"
 wasm2class                     = "0.5.0"
 endive                         = "1.1.0"
@@ -206,6 +205,7 @@ javelit                        = "0.89.0"
 jwalker                        = "1.1.0"
 hashsmith                      = "0.2.0"
 tamboui                        = "0.5.0"
+qxotic                         = "0.2.0"
 
 # Compose
 compose                        = "1.13.0-alpha01"
@@ -227,7 +227,7 @@ kottie                         = "2.3.0"
 mosaic                         = "0.18.0"
 filekit-dialogs                = "0.16.0"
 
-tomlj                          = "1.2.0"
+tomlj                          = "1.3.0"
 maven-plugin-api               = "4.0.0-rc-6"
 maven-plugin-annotations       = "3.15.1"
 
@@ -295,6 +295,7 @@ ktor-server-cio                      = { module = "io.ktor:ktor-server-cio"     
 ktor-server-jetty-jakarta            = { module = "io.ktor:ktor-server-jetty-jakarta"                               , version.ref = "ktor"}
 ktor-server-netty                    = { module = "io.ktor:ktor-server-netty"                                       , version.ref = "ktor"}
 ktor-server-content-negotiation      = { module = "io.ktor:ktor-server-content-negotiation"                         , version.ref = "ktor"}
+ktor-server-metrics                  = { module = "io.ktor:ktor-server-metrics"                                     , version.ref = "ktor"}
 ktor-server-metrics-micrometer       = { module = "io.ktor:ktor-server-metrics-micrometer"                          , version.ref = "ktor"}
 ktor-server-call-logging             = { module = "io.ktor:ktor-server-call-logging"                                , version.ref = "ktor"}
 ktor-server-call-id                  = { module = "io.ktor:ktor-server-call-id"                                     , version.ref = "ktor"}
@@ -309,6 +310,7 @@ ktor-server-compression              = { module = "io.ktor:ktor-server-compressi
 ktor-server-compression-zstd         = { module = "io.ktor:ktor-server-compression-zstd"                            , version.ref = "ktor"}
 ktor-server-sessions                 = { module = "io.ktor:ktor-server-sessions"                                    , version.ref = "ktor"}
 ktor-server-rate-limit               = { module = "io.ktor:ktor-server-rate-limit"                                  , version.ref = "ktor"}
+ktor-server-body-limit               = { module = "io.ktor:ktor-server-body-limit"                                  , version.ref = "ktor"}
 ktor-server-double-receive           = { module = "io.ktor:ktor-server-double-receive"                              , version.ref = "ktor"}
 ktor-server-request-validation       = { module = "io.ktor:ktor-server-request-validation"                          , version.ref = "ktor"}
 ktor-server-host-common              = { module = "io.ktor:ktor-server-host-common"                                 , version.ref = "ktor"}
@@ -316,12 +318,16 @@ ktor-server-resources                = { module = "io.ktor:ktor-server-resources
 ktor-server-auth                     = { module = "io.ktor:ktor-server-auth"                                        , version.ref = "ktor"}
 ktor-server-auth-jwt                 = { module = "io.ktor:ktor-server-auth-jwt"                                    , version.ref = "ktor"}
 ktor-server-auth-apikey              = { module = "io.ktor:ktor-server-auth-api-key"                                , version.ref = "ktor"}
+ktor-server-auth-ldap                = { module = "io.ktor:ktor-server-auth-ldap"                                   , version.ref = "ktor"}
+ktor-server-auth-oidc                = { module = "io.ktor:ktor-server-auth-oidc"                                   , version.ref = "ktor"}
 ktor-server-default-headers          = { module = "io.ktor:ktor-server-default-headers"                             , version.ref = "ktor"}
+ktor-server-caching-headers          = { module = "io.ktor:ktor-server-caching-headers"                             , version.ref = "ktor"}
 ktor-server-status-pages             = { module = "io.ktor:ktor-server-status-pages"                                , version.ref = "ktor"}
 ktor-server-partial-content          = { module = "io.ktor:ktor-server-partial-content"                             , version.ref = "ktor"}
 ktor-server-auto-head                = { module = "io.ktor:ktor-server-auto-head-response"                          , version.ref = "ktor"}
 ktor-server-forwarded-header         = { module = "io.ktor:ktor-server-forwarded-header"                            , version.ref = "ktor"}
 ktor-server-html                     = { module = "io.ktor:ktor-server-html-builder"                                , version.ref = "ktor"}
+ktor-server-jte                      = { module = "io.ktor:ktor-server-jte"                                         , version.ref = "ktor"}
 ktor-server-websockets               = { module = "io.ktor:ktor-server-websockets"                                  , version.ref = "ktor"}
 ktor-server-sse                      = { module = "io.ktor:ktor-server-sse"                                         , version.ref = "ktor"}
 ktor-server-config-yaml              = { module = "io.ktor:ktor-server-config-yaml"                                 , version.ref = "ktor"}
@@ -339,12 +345,14 @@ ktor-client-curl                     = { module = "io.ktor:ktor-client-curl"    
 ktor-client-js                       = { module = "io.ktor:ktor-client-js"                                          , version.ref = "ktor"}
 ktor-client-okhttp                   = { module = "io.ktor:ktor-client-okhttp"                                      , version.ref = "ktor"}
 ktor-client-jetty                    = { module = "io.ktor:ktor-client-jetty"                                       , version.ref = "ktor"}
+ktor-client-engine-defaults          = { module = "io.ktor:ktor-client-engine-defaults"                             , version.ref = "ktor"}
 ktor-client-serialization            = { module = "io.ktor:ktor-client-serialization"                               , version.ref = "ktor"}
 ktor-client-websockets               = { module = "io.ktor:ktor-client-websockets"                                  , version.ref = "ktor"}
 ktor-client-webrtc                   = { module = "io.ktor:ktor-client-webrtc"                                      , version.ref = "ktor"}
 ktor-client-content-negotiation      = { module = "io.ktor:ktor-client-content-negotiation"                         , version.ref = "ktor"}
 ktor-client-auth                     = { module = "io.ktor:ktor-client-auth"                                        , version.ref = "ktor"}
 ktor-client-logging                  = { module = "io.ktor:ktor-client-logging"                                     , version.ref = "ktor"}
+ktor-client-call-id                  = { module = "io.ktor:ktor-client-call-id"                                     , version.ref = "ktor"}
 ktor-client-resources                = { module = "io.ktor:ktor-client-resources"                                   , version.ref = "ktor"}
 ktor-client-encoding                 = { module = "io.ktor:ktor-client-encoding"                                    , version.ref = "ktor"}
 ktor-client-mock                     = { module = "io.ktor:ktor-client-mock"                                        , version.ref = "ktor"}
@@ -656,12 +664,8 @@ ktembed-runtime                      = { module = "dev.ktool:ktembed-runtime"   
 cidre                                = { module = "at.asitplus:cidre"                                                       , version.ref = "cidre" }
 
 # Wasm
-chicory-bom                          = { module = "com.dylibso.chicory:bom"                                                 , version.ref = "chicory" }
-chicory-runtime                      = { module = "com.dylibso.chicory:runtime"                                             , version.ref = "chicory" }
-chicory-compiler                     = { module = "com.dylibso.chicory:compiler"                                            , version.ref = "chicory" }
-chicory-annotations                  = { module = "com.dylibso.chicory:annotations"                                         , version.ref = "chicory" }
-chicory-wasi                         = { module = "com.dylibso.chicory:wasi"                                                , version.ref = "chicory" }
-chicory-simd                         = { module = "com.dylibso.chicory:simd"                                                , version.ref = "chicory" }
+endive-runtime                       = { module = "run.endive:runtime"                                                      , version.ref = "endive" }
+endive-wasi                          = { module = "run.endive:wasi"                                                         , version.ref = "endive" }
 chasm                                = { module = "io.github.charlietap.chasm:chasm"                                        , version.ref = "chasm" }
 weh-chasm-wasip1                     = { module = "at.released.weh:bindings-chasm-wasip1"                                   , version.ref = "weh-bindings" }
 weh-chasm-emscripten                 = { module = "at.released.weh:bindings-chasm-emscripten"                               , version.ref = "weh-bindings" }
@@ -671,8 +675,7 @@ zerofs                               = { module = "io.roastedroot:zerofs"       
 lumis4j                              = { module = "io.roastedroot:lumis4j"                                                  , version.ref = "lumis4j" }
 protobuf4j-v3                        = { module = "io.roastedroot:protobuf4j-v3"                                            , version.ref = "protobuf4j" }
 protobuf4j-v4                        = { module = "io.roastedroot:protobuf4j-v4"                                            , version.ref = "protobuf4j" }
-endive-runtime                       = { module = "run.endive:runtime"                                                      , version.ref = "endive" }
-endive-wasi                          = { module = "run.endive:wasi"                                                         , version.ref = "endive" }
+
 
 # AI/ML
 langchain4j                          = { module = "dev.langchain4j:langchain4j"                                             , version.ref = "langchain4j" }
@@ -699,6 +702,12 @@ jwalker                              = { module = "io.github.epieffe:jwalker"   
 hashsmith                            = { module = "io.github.bluuewhale:hashsmith"                                          , version.ref = "hashsmith" }
 tamboui-toolkit                      = { module = "dev.tamboui:tamboui-toolkit"                                             , version.ref = "tamboui" }
 tamboui-panama-backend               = { module = "dev.tamboui:tamboui-panama-backend"                                      , version.ref = "tamboui" }
+qxotic-bom                           = { module = "com.qxotic:jinfer-bom"                                                   , version.ref = "qxotic" }
+qxotic-jinfer-models                 = { module = "com.qxotic:jinfer-models-all"                                            , version.ref = "qxotic" }
+qxotic-jinfer-chat                   = { module = "com.qxotic:jinfer-chat"                                                  , version.ref = "qxotic" }
+qxotic-jinfer-langchain4j            = { module = "com.qxotic:jinfer-langchain4j"                                           , version.ref = "qxotic" }
+qxotic-jam-native                    = { module = "com.qxotic:jam-native"                                                   , version.ref = "qxotic" }
+qxotic-jam-vector                    = { module = "com.qxotic:jam-vector"                                                   , version.ref = "qxotic" }
 
 # Social
 ozone-bluesky                        = { module = "sh.christian.ozone:bluesky"                                              , version.ref = "bluesky-ozone"}

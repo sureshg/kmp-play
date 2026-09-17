@@ -1,6 +1,5 @@
 modules:
   - build-logic/plugins/bcv
-  - build-logic/plugins/build-config
   - build-logic/plugins/native-image
   - compose/cmp-app
   - compose/cmp-shared
@@ -20,4 +19,3 @@ modules:
 plugins:
   - //build-logic/plugins/bcv
   - //build-logic/plugins/native-image
-  - //build-logic/plugins/build-config

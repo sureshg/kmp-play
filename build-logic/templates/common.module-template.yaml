@@ -89,8 +89,8 @@ settings:
       version: 2.3.12
 
     rpc:
-      enabled: false
-      version: 0.10.3
+      enabled: true
+      version: 0.10.4
       annotationTypeSafetyEnabled: true
 
   publishing:

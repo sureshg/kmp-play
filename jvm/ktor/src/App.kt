@@ -9,13 +9,13 @@ import io.ktor.server.plugins.swagger.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.util.logging.*
+import kotlin.io.path.Path
+import kotlin.io.path.exists
 import kotlinx.rpc.krpc.ktor.server.Krpc
 import kotlinx.rpc.krpc.ktor.server.rpc
 import kotlinx.rpc.krpc.serialization.json.json
 import rpc.MyServiceImpl
 import rpc.MyServiceParam
-import kotlin.io.path.Path
-import kotlin.io.path.exists
 
 fun main(args: Array<String>) =
     try {
