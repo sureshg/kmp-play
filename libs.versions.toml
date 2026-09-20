@@ -113,7 +113,7 @@ caffeine-coroutines            = "2.0.5"
 kotlin-codepoints              = "0.11.0"
 kotlin-logging                 = "8.0.4"
 kotlin-bignum                  = "0.3.10"
-kotlin-diff                    = "1.3.0"
+kotlin-diff                    = "1.4.0"
 kotlin-retry                   = "2.0.2"
 kotlinx-jsonpath               = "4.0.0"
 kotlin-cryptography            = "0.6.0"
@@ -334,6 +334,7 @@ ktor-server-config-yaml              = { module = "io.ktor:ktor-server-config-ya
 ktor-server-test-host                = { module = "io.ktor:ktor-server-test-host"                                   , version.ref = "ktor"}
 ktor-serialization-json              = { module = "io.ktor:ktor-serialization-kotlinx-json"                         , version.ref = "ktor"}
 ktor-serialization-xml               = { module = "io.ktor:ktor-serialization-kotlinx-xml"                          , version.ref = "ktor"}
+ktor-version-catalog                 = { module = "io.ktor:ktor-version-catalog"                                    , version.ref = "ktor"}
 swagger-codegen                      = { module = "io.swagger.codegen.v3:swagger-codegen"                           , version.ref = "swagger-codegen"}
 swagger-ui-webjars                   = { module = "org.webjars.npm:swagger-ui"                                      , version.ref = "swagger-ui"}
 webauthn4j-core                      = { module = "com.webauthn4j:webauthn4j-core"                                  , version.ref = "webauthn4j"}
