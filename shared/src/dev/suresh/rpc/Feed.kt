@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.rpc.annotations.Rpc
 
 @Rpc
-interface MyService {
+interface Feed {
   fun data(input: String): Flow<String>
 
   suspend fun ping(): String

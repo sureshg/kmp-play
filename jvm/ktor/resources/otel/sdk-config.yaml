@@ -1,0 +1,135 @@
+# otel-sdk-config.yaml is a comprehensive starting point for configuring the SDK, including exporting to
+# localhost via OTLP.
+#
+# NOTE: With the exception of env var substitution syntax (i.e. ${MY_ENV}), SDKs ignore
+# environment variables when interpreting config files. This including ignoring all env
+# vars defined in https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/.
+#
+# For schema documentation, including required properties, semantics, default behavior, etc,
+# see: https://opentelemetry.io/docs/specs/otel-config/types/
+file_format: "1.1"
+disabled: ${OTEL_SDK_DISABLED:-false}
+log_level: info
+
+resource:
+  attributes:
+    - name: service.name
+      value: ${OTEL_SERVICE_NAME:-ktor-app}
+    - name: service.namespace
+      value: ${OTEL_SERVICE_NAMESPACE:-dev}
+    - name: service.instance.id
+      value: ${OTEL_SERVICE_INSTANCE_ID:-compute-1}
+
+attribute_limits:
+  attribute_count_limit: 128
+
+propagator:
+  composite:
+    - tracecontext:
+    - baggage:
+
+tracer_provider:
+  processors:
+    - batch:
+        schedule_delay: 5000
+        export_timeout: 30000
+        max_queue_size: 2048
+        max_export_batch_size: 512
+        exporter:
+          otlp_grpc:
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://host.docker.internal:4317}
+            compression: gzip
+            timeout: 10000
+  limits:
+    attribute_count_limit: 128
+    event_count_limit: 128
+    link_count_limit: 128
+    event_attribute_count_limit: 128
+    link_attribute_count_limit: 128
+  sampler:
+    parent_based:
+      root:
+        rule_based_routing:
+          fallback_sampler:
+            always_on:
+          span_kind: SERVER
+          rules:
+            - action: DROP
+              attribute: url.path
+              pattern: /docs.*
+        # cel_based:
+        #   fallback_sampler:
+        #     always_on:
+        #   expressions:
+        #     - action: DROP
+        #       expression: spanKind == 'SERVER' && attribute['url.path'].startsWith('/health')
+        #     - action: RECORD_AND_SAMPLE
+        #       expression: attribute['http.method'] == 'GET' && attribute['http.status_code'] < 400
+      remote_parent_sampled:
+        always_on:
+      remote_parent_not_sampled:
+        always_off:
+      local_parent_sampled:
+        always_on:
+      local_parent_not_sampled:
+        always_off:
+
+meter_provider:
+  readers:
+    - periodic:
+        interval: 60000
+        timeout: 30000
+        exporter:
+          otlp_grpc:
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://host.docker.internal:4317}
+            compression: gzip
+            timeout: 10000
+            temporality_preference: cumulative
+            default_histogram_aggregation: explicit_bucket_histogram
+  exemplar_filter: trace_based
+
+logger_provider:
+  processors:
+    - batch:
+        schedule_delay: 1000
+        export_timeout: 30000
+        max_queue_size: 2048
+        max_export_batch_size: 512
+        exporter:
+          otlp_grpc:
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://host.docker.internal:4317}
+            compression: gzip
+            timeout: 10000
+  limits:
+    attribute_count_limit: 128
+
+distribution:
+  javaagent:
+    instrumentation:
+      default_enabled: true
+
+instrumentation/development:
+  java:
+    common:
+      http:
+        server:
+          emit_experimental_telemetry/development: true
+        client:
+          emit_experimental_telemetry/development: true
+    runtime_telemetry:
+      emit_experimental_metrics/development: true
+      emit_experimental_jfr_metrics/development: true
+      jfr_metrics/development:
+        included:
+          - "*"
+    logback_appender:
+      enabled: true
+      experimental_log_attributes/development: false
+      capture_code_attributes/development: false
+      capture_marker_attribute/development: false
+      capture_arguments/development: false
+      mdc_attributes/development:
+        included:
+          - "*"
+        excluded:
+          - "*secret*"

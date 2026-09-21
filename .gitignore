@@ -13,10 +13,8 @@ classes.lst
 *.aot*
 jre/
 
-# Kotlin
-**/.kotlin
-
 # Kotlin Toolchain
+**/.kotlin
 build/
 
 # AI Agents & Tools
@@ -26,3 +24,6 @@ CLAUDE.local.md
 .codex/
 .cursor/
 .env
+
+# Application
+*.log

@@ -23,7 +23,6 @@ dependencies:
   - bom: $libs.kotlinx.coroutines.bom
   - bom: $libs.kotlinx.serialization.bom
   - bom: $libs.ktor.bom
-  - bom: $libs.kotlin.wrappers.bom
   - $libs.kotlinx.coroutines.core: exported
   - $libs.kotlinx.datetime: exported
   - $libs.kotlinx.io.core: exported
