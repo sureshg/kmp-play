@@ -29,9 +29,9 @@ settings:
       # selectionMode: javaHome
 
   kotlin:
-    version: 2.4.20
-    languageVersion: 2.4
-    apiVersion: 2.4
+    version: 2.5.0-Beta1
+    languageVersion: 2.5
+    apiVersion: 2.5
     explicitApi: disable
     progressiveMode: true
     allWarningsAsErrors: false
@@ -47,7 +47,7 @@ settings:
       - -Xconsistent-data-class-copy-visibility
       - -Xname-based-destructuring=complete
       - -Xexplicit-context-arguments
-      - -Xintrinsic-const-evaluation
+      - -Xcompanion-blocks-and-extensions
       # - -XXLanguage:+dataObjects
       # - -Xannotation-target-all
       # - -Xskip-prerelease-check
