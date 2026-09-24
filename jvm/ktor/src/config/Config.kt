@@ -29,6 +29,7 @@ fun initProps() {
   System.setProperty("jdk.tls.maxCertificateChainLength", "15")
   System.setProperty("jdk.includeInExceptions", "hostInfo")
   System.setProperty("slf4j.internal.verbosity", "WARN")
+  System.setProperty("logback.scan.enabled", "false")
   System.setProperty("LOG_DIR", logDir)
   KotlinLoggingConfiguration.logStartupMessage = false
 

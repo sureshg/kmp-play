@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod="15 seconds" packagingData="false" debug="false">
+<configuration scan="${logback.scan.enabled:-false}"
+               scanPeriod="${logback.scan.interval.seconds:-30} seconds"
+               packagingData="false"
+               debug="false">
     <import class="ch.qos.logback.core.ConsoleAppender"/>
     <import class="ch.qos.logback.core.FileAppender"/>
     <import class="ch.qos.logback.core.rolling.RollingFileAppender"/>
