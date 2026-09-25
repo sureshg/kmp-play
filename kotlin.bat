@@ -17,9 +17,9 @@
 setlocal
 
 @rem The version of the Kotlin Toolchain distribution to provision and use
-set kotlin_cli_version=0.13.0-dev-4437
+set kotlin_cli_version=0.13.0-dev-4438
 @rem Establish chain of trust from here by specifying the exact checksum of the Kotlin Toolchain distribution to be run
-set kotlin_cli_sha256=9f6e1652ebb0eec0565ed0d1ce7f50c69b9b0c3c4f72d53a733b454c68013465
+set kotlin_cli_sha256=62b42abb77a11e19a54fe75184e6646839e775fa54068c1063852a1ed8c565d6
 
 if not defined KOTLIN_CLI_DOWNLOAD_ROOT set KOTLIN_CLI_DOWNLOAD_ROOT=https://packages.jetbrains.team/maven/p/amper/amper
 if not defined KOTLIN_CLI_BOOTSTRAP_CACHE_DIR set KOTLIN_CLI_BOOTSTRAP_CACHE_DIR=%LOCALAPPDATA%\JetBrains\Kotlin\cli
@@ -40,13 +40,14 @@ set sha=%~4
 set sha_size=%~5
 set show_banner_on_cache_miss=%~6
 
+setlocal enableDelayedExpansion
+
 set flag_file=%target_dir%\.flag
 if exist "%flag_file%" (
     set /p current_flag=<"%flag_file%"
-    if "%current_flag%" == "%sha%" exit /b
+    if "!current_flag!" == "%sha%" exit /b
 )
 
-setlocal enableDelayedExpansion
 set NL=^
 
 
