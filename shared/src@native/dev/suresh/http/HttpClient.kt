@@ -11,7 +11,7 @@ actual fun httpClient(
     timeout: Timeout,
     retry: Retry,
     httpLogger: KLogger,
-    config: HttpClientConfigurer,
+    config: ClientConfig,
 ) =
     HttpClient(Curl) {
       config(this)

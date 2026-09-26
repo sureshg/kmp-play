@@ -31,7 +31,7 @@ dependencies:
   - $libs.kotlin.retry: exported
   - $libs.kotlin.logging: exported
   - $libs.ktor.client.core: exported
-  - $libs.ktor.client.cio: exported
+  - $libs.ktor.client.engine.defaults: exported
   - $libs.ktor.client.content.negotiation: exported
   - $libs.ktor.client.encoding: exported
   - $libs.ktor.client.logging: exported
@@ -58,7 +58,6 @@ dependencies@native:
   - $libs.ktor.client.curl: exported
 
 dependencies@web:
-  - $libs.ktor.client.js: exported
   - $libs.kotlinx.browser: exported
 
 test-dependencies:

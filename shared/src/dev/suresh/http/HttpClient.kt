@@ -33,7 +33,7 @@ val json by lazy {
   }
 }
 
-typealias HttpClientConfigurer = HttpClientConfig<*>.() -> Unit
+typealias ClientConfig = HttpClientConfig<*>.() -> Unit
 
 /**
  * Multiplatform HTTP client engine configuration
@@ -45,15 +45,16 @@ expect fun httpClient(
     timeout: Timeout = Timeout(),
     retry: Retry = Retry(),
     httpLogger: KLogger,
-    config: HttpClientConfigurer = defaultHttpClientConfig(name, timeout, retry, httpLogger),
+    config: ClientConfig = defaultConfig(name, timeout, retry, httpLogger),
 ): HttpClient
 
-fun defaultHttpClientConfig(
+/** Default [ClientConfig] shared by all platform engines. */
+fun defaultConfig(
     name: String,
     timeout: Timeout,
     retry: Retry,
     httpLogger: KLogger,
-): HttpClientConfigurer = {
+): ClientConfig = {
   install(Resources)
   install(ContentNegotiation) { json(json) }
   install(ContentEncoding) {
