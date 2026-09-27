@@ -89,12 +89,12 @@ $ docker run -it --rm \
 
 ```bash
 # Wine via Docker
-$ docker run -it --rm \
-         --platform="linux/amd64" \
-         --pull always \
-         -e DISPLAY=host.docker.internal:0 \
-         -v "$PWD":/app \
-         scottyhardy/docker-wine:stable-10.0 wine /app/build/tasks/_windows_linkMingwX64Release/windows.exe
+$ docker run --rm \
+         --platform linux/amd64 \
+         -v "$PWD":/app -w /app \
+         -e WINEDEBUG=-all \
+         scottyhardy/docker-wine:stable-10.0 \
+         wine build/tasks/_windows_linkMingwX64Release/windows.exe
 ```
 
 ### GraalVM Native Image
