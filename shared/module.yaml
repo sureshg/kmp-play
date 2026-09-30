@@ -52,6 +52,7 @@ dependencies@jvm:
   - $libs.jspecify: exported
   - $libs.ktor.client.java: exported
   - $libs.ayza: exported
+  - $libs.certkit: exported
   - $libs.google.auto.annotations: compile-only
 
 dependencies@native:
