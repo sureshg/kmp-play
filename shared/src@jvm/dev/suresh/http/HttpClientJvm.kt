@@ -19,6 +19,7 @@ val customSSLFactory: SSLFactory by lazy {
   SSLFactory.builder()
       .withDefaultTrustMaterial()
       .withTrustMaterial(rootCAs)
+      .withSystemTrustMaterial()
       .withSwappableTrustMaterial()
       .withSslParametersEnhancer {}
       .build()
