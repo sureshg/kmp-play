@@ -158,6 +158,8 @@ settings@native:
     optIns:
       - kotlinx.cinterop.ExperimentalForeignApi
       - kotlin.experimental.ExperimentalNativeApi
+  # freeCompilerArgs:
+  #   - -Xoverride-konan-properties=dependenciesUrl=https://your-artifactory/artifactory/kotlin-native-remote
 
 settings@linux:
   kotlin:
