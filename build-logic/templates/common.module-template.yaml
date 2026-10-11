@@ -21,7 +21,7 @@ repositories:
 
 settings:
   jvm:
-    # release: 26
+    release: 26
     storeParameterNames: true
     jdk:
       version: 26
