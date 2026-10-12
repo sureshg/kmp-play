@@ -48,6 +48,7 @@ settings:
       - -Xname-based-destructuring=complete
       - -Xexplicit-context-arguments
       - -Xcompanion-blocks-and-extensions
+      - -XXLanguage:+EagerLambdaAnalysis
       # - -XXLanguage:+dataObjects
       # - -Xannotation-target-all
       # - -Xskip-prerelease-check
