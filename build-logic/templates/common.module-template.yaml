@@ -29,7 +29,7 @@ settings:
       # selectionMode: javaHome
 
   kotlin:
-    version: 2.5.0-Beta1
+    version: 2.5.0-Beta2
     languageVersion: 2.5
     apiVersion: 2.5
     explicitApi: disable
@@ -48,7 +48,7 @@ settings:
       - -Xname-based-destructuring=complete
       - -Xexplicit-context-arguments
       - -Xcompanion-blocks-and-extensions
-      - -XXLanguage:+EagerLambdaAnalysis
+      # - -XXLanguage:+EagerLambdaAnalysis
       # - -XXLanguage:+dataObjects
       # - -Xannotation-target-all
       # - -Xskip-prerelease-check
@@ -104,6 +104,7 @@ settings:
     mavenCentral:
       enabled: false
       publishingMode: auto
+      notifyKlibsIo: true
     pom:
       url: https://github.com/sureshg/kmp-play
       scm: https://github.com/sureshg/kmp-play.git
