@@ -45,6 +45,14 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
+      - name: ☕ Install OpenJDK EA
+        id: install-openjdk
+        uses: oracle-actions/setup-java@main
+        with:
+          website: jdk.java.net
+          release: EA
+          version: latest
+
       - name: 🅺 Cache Kotlin Toolchain
         uses: sureshg/actions/kotlin-toolchain-cache@v1
         with:
