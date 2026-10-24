@@ -21,10 +21,10 @@ repositories:
 
 settings:
   jvm:
-    release: 26
+    release: 28
     storeParameterNames: true
     jdk:
-      version: 26
+      version: 28
       distributions: [ oracleOpenJdk, zulu ]
       # selectionMode: javaHome
 
