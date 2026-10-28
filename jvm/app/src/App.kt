@@ -6,6 +6,7 @@ import ffm.vectorApi
 import io.roastedroot.lumis4j.core.Lang
 import io.roastedroot.lumis4j.core.Lumis
 import io.roastedroot.lumis4j.core.Theme
+import jdk.structuredConcurrency
 import kotlinx.schema.generator.json.JsonSchemaConfig
 import kotlinx.schema.generator.json.serialization.SerializationClassJsonSchemaGenerator
 import kotlinx.schema.json.encodeToString
@@ -13,7 +14,8 @@ import kotlinx.schema.json.encodeToString
 suspend fun main() {
   System.setProperty("slf4j.internal.verbosity", "WARN")
   println(PosixUser)
-  mediaClient()
+  structuredConcurrency()
+  // mediaClient()
   vectorApi()
   jsonSchema()
   tts()
