@@ -17,9 +17,9 @@
 set -e -u
 
 # The version of the Kotlin Toolchain (and CLI) distribution to provision and use
-kotlin_cli_version=0.14.0-dev-4558
+kotlin_cli_version=0.14.0-dev-4565
 # Establish chain of trust from here by specifying exact checksum of Kotlin Toolchain (and CLI) distribution to be run
-kotlin_cli_sha256=10529fa0c2b6e418c5c93496d3ff8cea53e03093888f0325703e83fc7e08b460
+kotlin_cli_sha256=f66b855b8a764da6872233355655bb2abdd4f090450d3910fbe07875441cf8cc
 
 KOTLIN_CLI_DOWNLOAD_ROOT="${KOTLIN_CLI_DOWNLOAD_ROOT:-https://packages.jetbrains.team/maven/p/amper/amper}"
 
@@ -66,6 +66,9 @@ download_and_extract() {
   cache_dir="$5"
   extract_dir="$6"
   show_banner_on_cache_miss="$7"
+  # Optional name of a function to run on the extracted files before the extraction dir is marked as complete.
+  # It is called with the extraction directory as single argument.
+  post_process="${8:-}"
 
   if [ -e "$extract_dir/.flag" ] && [ "$(cat "$extract_dir/.flag")" = "${file_sha}" ]; then
     # Everything is up-to-date in $extract_dir, do nothing
@@ -177,6 +180,12 @@ EOF
 
   rm -f "$temp_file"
 
+  # Note: a failing post-processing triggers the EXIT trap, which removes the incomplete extraction dir.
+  # This is why we run it before writing the .flag file, which marks the extraction dir as complete.
+  if [ -n "$post_process" ]; then
+    "$post_process" "$extract_dir"
+  fi
+
   echo "$file_sha" >"$extract_dir/.flag"
 
   # Unlock and cleanup the lock file
@@ -256,6 +265,7 @@ fi
 
 # ********** System detection **********
 
+# /!\ Careful: the cache dir needs to stay aligned with the other wrapper and with AmperUserCacheRoot
 kernelName=$(uname -s)
 case "$kernelName" in
   Darwin* )
