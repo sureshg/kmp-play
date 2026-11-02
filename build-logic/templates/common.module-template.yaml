@@ -87,7 +87,7 @@ settings:
       version: 1.12.0
 
     ksp:
-      version: 2.3.12
+      version: 2.3.13
 
     rpc:
       enabled: true

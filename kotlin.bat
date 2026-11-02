@@ -17,9 +17,9 @@
 setlocal
 
 @rem The version of the Kotlin Toolchain distribution to provision and use
-set kotlin_cli_version=0.14.0-dev-4565
+set kotlin_cli_version=0.14.0-dev-4586
 @rem Establish chain of trust from here by specifying the exact checksum of the Kotlin Toolchain distribution to be run
-set kotlin_cli_sha256=f66b855b8a764da6872233355655bb2abdd4f090450d3910fbe07875441cf8cc
+set kotlin_cli_sha256=f3e6ee693f61b9f1cec924d90ca5c859c66e66a37ab06d2d51d31dcde964570f
 
 if not defined KOTLIN_CLI_DOWNLOAD_ROOT set KOTLIN_CLI_DOWNLOAD_ROOT=https://packages.jetbrains.team/maven/p/amper/amper
 
