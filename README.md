@@ -129,15 +129,17 @@ $ jar -xf build/tasks/_ktor_executableJarJvm/ktor-jvm-executable.jar
 
 # Detect required Java modules and build bundle
 $ MODULES=$(jdeps -q -R --ignore-missing-deps --print-module-deps --multi-release=25 --class-path "BOOT-INF/lib/*" BOOT-INF/classes)
+# java.base,java.desktop,java.instrument,java.logging,java.management,java.naming,java.net.http,jdk.incubator.vector,jdk.jfr,jdk.unsupported
 
 # Build native bundle (download jbundle from https://github.com/avelino/jbundle/releases/tag/latest)
 $ brew tap avelino/jbundle
 $ brew install jbundle
 $ jbundle build \
       --input build/tasks/_ktor_executableJarJvm/ktor-jvm-executable.jar \
-      --jvm-args="--enable-preview" \
+      --jvm-args="--enable-preview --enable-native-access=ALL-UNNAMED" \
       --modules $MODULES \
-      --compact-banner \
+      --no-appcds \
+      --banner-size off \
       --output ktor-app  
 ```
 
