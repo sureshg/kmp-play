@@ -70,7 +70,6 @@ test-dependencies@jvm:
   - bom: $libs.junit.bom
   - bom: $libs.testcontainers.bom
   - $libs.mockk: exported
-  - $libs.mockk.bdd: exported
   - $libs.slf4j.simple: exported
   - $libs.testcontainers.junit5: exported
   - $libs.testcontainers.postgresql: exported
