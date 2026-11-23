@@ -38,25 +38,33 @@ tracer_provider:
             endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://host.docker.internal:4317}
             compression: gzip
   sampler:
-    parent_based:
-      root:
-        rule_based_routing:
-          fallback_sampler:
-            always_on:
-          span_kind: SERVER
-          rules:
-            - action: DROP
-              attribute: url.path
-              pattern: ^/docs(/.*)?$
-        # Requires io.opentelemetry.contrib:opentelemetry-cel-sampler as a javaagent extension:
-        # cel_based:
-        #   fallback_sampler:
-        #     always_on:
-        #   expressions:
-        #     - action: DROP
-        #       expression: spanKind == 'SERVER' && attribute['url.path'].startsWith('/health')
-        #     - action: RECORD_AND_SAMPLE
-        #       expression: spanKind == 'SERVER' && attribute['http.request.method'] == 'GET'
+    composite/development:
+      parent_threshold:
+        root:
+          rule_based:
+            rules:
+              - span_kinds:
+                  - server
+                attribute_patterns:
+                  key: url.path
+                  included:
+                    - /docs
+                    - /docs/*
+                sampler:
+                  always_off:
+              - sampler:
+                  always_on:
+    # Requires io.opentelemetry.contrib:opentelemetry-cel-sampler as a javaagent extension:
+    # parent_based:
+    #   root:
+    #     cel_based:
+    #       fallback_sampler:
+    #         always_on:
+    #       expressions:
+    #         - action: DROP
+    #           expression: spanKind == 'SERVER' && attribute['url.path'].startsWith('/health')
+    #         - action: RECORD_AND_SAMPLE
+    #           expression: spanKind == 'SERVER' && attribute['http.request.method'] == 'GET'
 
 meter_provider:
   readers:
