@@ -1,10 +1,10 @@
 package ai
 
-import com.qxotic.jinfer.langchain4j.JinferChatModel
-import com.qxotic.jinfer.langchain4j.JinferSpeechModel
+import com.qxotic.jinfer.langchain4j.*
 import dev.langchain4j.data.message.AudioContent
 import dev.langchain4j.data.message.TextContent
 import dev.langchain4j.data.message.UserMessage
+import dev.langchain4j.model.decision.request.*
 import java.util.concurrent.CountDownLatch
 import javax.sound.sampled.AudioSystem
 import javax.sound.sampled.LineEvent
@@ -17,8 +17,8 @@ fun tts() {
       // .model("remixerdec/Inflect-Nano-v2-GGUF:Q8_0")
       // .companion("lexicon", "remixerdec/Inflect-Nano-v2-GGUF/lexicon.bin")
       .build()
-      .use { model ->
-        val ttsRes = model.synthesize(text)
+      .use { tts ->
+        val ttsRes = tts.synthesize(text)
         AudioSystem.getAudioInputStream(ttsRes.audio().binaryData().inputStream()).use { ais ->
           AudioSystem.getClip().use { clip ->
             val latch = CountDownLatch(1)
@@ -32,6 +32,28 @@ fun tts() {
           }
         }
       }
+}
+
+fun system1() {
+  // modern-bert, ggmlc
+  JinferDecisionModel.builder().model("LiquidAI/LFM2.5-350M-GGUF:Q8_0").build().use { shield ->
+    val questions =
+        mapOf(
+            "spoiler" to YesNoQuestion.from("Does this give away the movie's big twist?"),
+        )
+
+    for (comment in
+        [
+            "The asteroid field chase is the best scene.",
+            "No way, Vader is Luke's father?!",
+            "Han Solo is the coolest character.",
+        ]) {
+      val req = DecisionRequest.builder().questions(questions).input(comment).build()
+      val probability = shield.decide(req).yesNo("spoiler").probability()
+      val text = if (probability > 0.5) "[SPOILER]" else comment
+      println("$probability  $text")
+    }
+  }
 }
 
 fun whisper() {

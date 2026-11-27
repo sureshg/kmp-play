@@ -1,4 +1,4 @@
-import ai.tts
+import ai.*
 import dev.suresh.http.ErrorStatus
 import dev.suresh.http.json
 import ffm.PosixUser
@@ -38,9 +38,9 @@ fun syntaxHighlight() {
                     }
 
                 """
-                    .trimIndent()
+                    .trimIndent(),
             )
-            .string()
+            .string(),
     )
   }
 }
